@@ -1,0 +1,42 @@
+.container {
+    flex: 1;
+    font-weight: bold;
+    display: flex;
+
+}
+p {
+    color: var(--color-white);
+    font-weight: 500;
+}
+.intro {
+    background-color: var(--color-accent);
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main {
+    font-size: 3rem;
+    font-weight: 700;
+}
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.loc {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color:var(--color-accent);
+}
+.license {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--color-accent);
+}

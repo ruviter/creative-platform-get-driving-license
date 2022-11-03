@@ -1,0 +1,16 @@
+.que {
+    font-size: 2rem;
+
+}
+
+.j1, .j2 {
+    width: 50%;
+    height: 30px;
+}
+
+.j1 {
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+.j2 {
+    border-radius: 0 0.5rem 0.5rem 0;
+}
