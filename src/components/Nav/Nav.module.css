@@ -1,0 +1,27 @@
+.nav {
+    background-color: rgb(0, 0, 255);
+    
+    
+    font-size: 1.2rem;
+    min-height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bolder;
+    font-size: 1.4rem;
+    color: white;
+    
+}
+.menu {
+    margin-left: 30px;
+    color: white;
+}
+
+.qna, .login {
+    background-color: transparent;
+    color: white;
+    margin-right: 10px;
+}
