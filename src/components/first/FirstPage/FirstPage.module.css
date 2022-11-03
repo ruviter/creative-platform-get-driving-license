@@ -18,7 +18,9 @@ p {
 }
 .main {
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 500;
+    font-family: 'GongGothicMedium';
+    margin-bottom: 2rem;
 }
 .info {
     flex: 1;
@@ -39,4 +41,13 @@ p {
     justify-content: center;
     align-items: center;
     background-color:var(--color-accent);
+}
+
+.move {
+    font-size: 2rem;
+    background-color: transparent;
+    border: 0;
+    position: fixed;
+    right: 5%;
+    bottom: 40%;
 }

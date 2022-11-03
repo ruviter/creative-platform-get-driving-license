@@ -3,6 +3,13 @@
   --color-white:white;
 }
 
+@font-face {
+  font-family: 'GongGothicMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   color: white;
@@ -25,7 +32,7 @@ ul {
 
 button {
   cursor: pointer;
-  border: 2px solid var(--color-white);
+  border: 1.2px solid var(--color-white);
   border-radius: 0.5rem;
   background-color: var(--color-accent);
   color: var(--color-white);
