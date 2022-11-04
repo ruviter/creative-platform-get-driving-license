@@ -3,6 +3,8 @@
   --color-font:#666666;
   --color-bg-white:white;
   --color-white:white;
+  overflow: hidden;
+
 }
 
 @font-face {
