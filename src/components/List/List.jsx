@@ -1,12 +1,12 @@
 import React from 'react';
-import Item from '../Item/Item';
+import Item from './Item/Item';
 import styles from './List.module.css'
 
-function List(props) {
+function List({onDetail}) {
     return (
         <div className={styles.List}>
             <ul>
-            <Item/>
+            <Item onDetail={onDetail}/>
             <Item/>
             <Item/>
             <Item/>

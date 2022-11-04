@@ -1,0 +1,19 @@
+.price {
+    align-self: center;
+}
+
+.section {
+    flex: 1;
+    display: flex;
+}
+.route {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.people {
+    flex: 1;
+    margin-top: 40px;
+    
+}
