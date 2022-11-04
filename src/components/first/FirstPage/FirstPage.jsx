@@ -4,11 +4,11 @@ import Location from "../Location/Location";
 import styles from "./FirstPage.module.css";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
-function FirstPage(props) {
+function FirstPage({onNextPage}) {
   return (
     <div className={styles.container}>
-      <section className={styles.intro}>
-        <div className={styles.introdiv}>
+      <section className={styles.sectionIntro}>
+        <div className={styles.intro}>
           <p>운전면허딸땐,</p>
           <div className={styles.main}> 면허따자</div>
           <p>
@@ -17,6 +17,10 @@ function FirstPage(props) {
             <p>어떤 학원을 갈지 천천히 골라봐~</p>
           </p>
         </div>
+        <img
+        className={styles.img}
+        src="https://velog.velcdn.com/images%2Fminn602%2Fpost%2Fb49932ff-9d9c-4711-a4df-73f2e6111fc4%2Fimage.png"
+      />
       </section>
       <section className={styles.info}>
         <div className={styles.loc}>
@@ -26,8 +30,7 @@ function FirstPage(props) {
           <License />
         </div>
       </section>
-      <button className={styles.move}>
-        맞춤학원 알아보기
+      <button className={styles.move} onClick={()=>{onNextPage(2)}}>
         <BsFillArrowRightCircleFill />
       </button>
     </div>

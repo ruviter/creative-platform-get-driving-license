@@ -8,7 +8,6 @@ function Nav(props) {
       <button className={styles.menu}><FiMenu/></button>
       <div className={styles.logo}>면허따자</div>
       <div className={styles.buttons}>
-        <button className={styles.qna}>Q&A</button>
         <button className={styles.login}>LOGIN</button>
         <button className={styles.sign}>SIGN UP</button>
       </div>

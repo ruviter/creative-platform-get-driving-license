@@ -4,13 +4,16 @@ import Nav from "./components/Nav/Nav";
 import Map from "./components/Map/Map";
 import List from "./components/List/List";
 import FirstPage from "./components/first/FirstPage/FirstPage";
+import { useState } from "react";
 
 function App() {
+  const [page, setPage] = useState(1)
+
   return (
     <div className={styles.App}>
       <Nav />
-      {true ? (
-        <FirstPage />
+      {page===1 ? (
+        <FirstPage onNextPage={setPage}/>
       ) : (
         <>
           <section className={styles.section}>

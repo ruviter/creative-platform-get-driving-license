@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Item.module.css";
 
-function Item(props) {
+function Item({onDetail}) {
   return (
-    <li className={styles.container}>
+    <li className={styles.container} onClick={onDetail}>
       <strong className={styles.title}>서울자동차운전면허학원</strong>
       <div className={styles.star}>★★★☆☆</div>
       <div className={styles.detail}>저희 학원은 친절한 서비스로 모시는...</div>

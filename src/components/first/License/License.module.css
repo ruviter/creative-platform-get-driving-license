@@ -14,3 +14,7 @@
 .j2 {
     border-radius: 0 0.5rem 0.5rem 0;
 }
+
+.j1:hover, .j2:hover {
+    
+}

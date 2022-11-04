@@ -1,5 +1,7 @@
 :root {
-  --color-accent: rgba(0, 0, 255, 85%);
+  --color-accent: #00bfff;
+  --color-font:#666666;
+  --color-bg-white:white;
   --color-white:white;
 }
 

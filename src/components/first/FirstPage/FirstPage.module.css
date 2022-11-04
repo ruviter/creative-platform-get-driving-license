@@ -8,14 +8,23 @@ p {
     color: var(--color-white);
     font-weight: 500;
 }
-.intro {
+.sectionIntro {
     background-color: var(--color-accent);
     flex: 1;
     padding: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.img {
+    margin-top: 20px;
+    width: 372px;
+    height: 200px;
+    border-radius: 0.3rem;
+    opacity: 0.9;
+}
+
 .main {
     font-size: 3rem;
     font-weight: 500;
@@ -44,7 +53,7 @@ p {
 }
 
 .move {
-    font-size: 2rem;
+    font-size: 3.5rem;
     background-color: transparent;
     border: 0;
     position: fixed;
