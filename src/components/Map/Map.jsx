@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Map.module.css";
+import map from '../../img/map.png'
 
 function Map(props) {
   return (
@@ -7,7 +8,7 @@ function Map(props) {
       <img
         className={styles.img}
         style={{ display: "block" }}
-        src="https://velog.velcdn.com/images%2Fminn602%2Fpost%2Fb49932ff-9d9c-4711-a4df-73f2e6111fc4%2Fimage.png"
+        src={map}
       />
     </div>
   );

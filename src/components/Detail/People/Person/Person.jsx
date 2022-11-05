@@ -8,8 +8,8 @@ function Person(props) {
         <div className={styles.person}>
             <img className={styles.img} src={imgSrc} alt="profile" />
             <div>김지수 강사님</div>
-            <div className={styles.star}>★★★★★</div>
-            <button>상세리뷰</button>
+            <div className={styles.star}>★ ★ ★ ★ ★</div>
+            <button >상세리뷰</button>
         </div>
     );
 }
