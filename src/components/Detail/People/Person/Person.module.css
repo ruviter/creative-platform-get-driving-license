@@ -7,3 +7,11 @@
     width: 100px;
     border-radius: 4rem;
 }
+
+.star {
+    color: rgb(249, 211, 0);
+}
+
+.person >button{
+    width: 100%;
+}

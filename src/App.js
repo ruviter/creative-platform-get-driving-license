@@ -8,26 +8,33 @@ import { useState } from "react";
 import Detail from "./components/Detail/Detail";
 
 function App() {
-  const [page, setPage] = useState(1)
-  const [detail, setDetail] = useState(false)
+  const [page, setPage] = useState(1);
 
   return (
     <div className={styles.App}>
       <Nav />
-      {page===1 ? (
-        <FirstPage onNextPage={setPage}/>
+      {page === 1 ? <FirstPage onNextPage={setPage} /> : <SecPage />}
+    </div>
+  );
+}
+
+function SecPage() {
+  const [detail, setDetail] = useState(false);
+  return (
+    <section className={styles.section}>
+      {detail ? (
+        <div className={styles.detail}>
+          <Detail />
+        </div>
       ) : (
-      
         <>
-          <section className={styles.section}>
-          <div className={styles.dm}>
-            {detail?<Detail />:<Map />}
-            </div>
-            <List onDetail={setDetail}/>
-          </section>
+          <div className={styles.map}>
+            <Map />
+          </div>
+          <List onDetail={setDetail} />
         </>
       )}
-    </div>
+    </section>
   );
 }
 

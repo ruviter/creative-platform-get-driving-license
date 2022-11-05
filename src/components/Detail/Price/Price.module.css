@@ -1,0 +1,20 @@
+table {
+  table-layout: fixed;
+  width: 340px;
+  height: 80%;
+  justify-self: center;
+  border-collapse: collapse;
+}
+
+caption {
+    text-align: left;
+    font-family: "GongGothicMedium";
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+.sum {
+  color: var(--color-accent);
+  font-weight: 800;
+  border-top: 1.5px solid rgb(194, 194, 194);
+}
+

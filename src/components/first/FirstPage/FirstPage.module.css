@@ -4,9 +4,9 @@
   font-weight: bold;
   display: flex;
   background-color: var(--color-accent);
+  color: var(--color-white);
 }
 p {
-  color: var(--color-white);
   font-weight: 500;
 }
 .sectionIntro {
@@ -60,7 +60,7 @@ p {
   font-size: 3.5rem;
   background-color: transparent;
   border: 0;
-  position: fixed;
+  position:fixed;
   right: 5%;
-  bottom: 40%;
+  bottom: 10%;
 }
