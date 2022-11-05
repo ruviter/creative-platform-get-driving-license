@@ -6,6 +6,7 @@ import List from "./components/List/List";
 import FirstPage from "./components/first/FirstPage/FirstPage";
 import { useState } from "react";
 import Detail from "./components/Detail/Detail";
+import Compare from "./components/Compare/Compare";
 
 function App() {
   const [page, setPage] = useState(1);
@@ -20,6 +21,7 @@ function App() {
 
 function SecPage() {
   const [detail, setDetail] = useState(false);
+  const [compare, setCompare] = useState(false)
   return (
     <section className={styles.section}>
       {detail ? (
@@ -31,9 +33,10 @@ function SecPage() {
           <div className={styles.map}>
             <Map />
           </div>
-          <List onDetail={setDetail} />
+          <List onDetail={setDetail} onCompare={setCompare} />
         </>
       )}
+      {compare && <Compare setModalOpen={setCompare} />}
     </section>
   );
 }

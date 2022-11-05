@@ -8,7 +8,7 @@ function Detail({}) {
   return (
     <>
       <div className={styles.price}>
-        <Price />
+        <Price title={'서울 자동차운전면허학원'}/>
       </div>
       <div className={styles.route}>
         <Route />
