@@ -7,21 +7,28 @@ import FirstPage from "./components/first/FirstPage/FirstPage";
 import { useState } from "react";
 import Detail from "./components/Detail/Detail";
 import Compare from "./components/Compare/Compare";
+import Qna from "./components/Qna/Qna";
 
 function App() {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(3);
 
   return (
     <div className={styles.App}>
       <Nav />
-      {page === 1 ? <FirstPage onNextPage={setPage} /> : <SecPage />}
+      {page === 1 ? (
+        <FirstPage onNextPage={setPage} />
+      ) : page === 2 ? (
+        <SecPage />
+      ) : (
+        <Qna />
+      )}
     </div>
   );
 }
 
 function SecPage() {
   const [detail, setDetail] = useState(false);
-  const [compare, setCompare] = useState(false)
+  const [compare, setCompare] = useState(false);
   return (
     <section className={styles.section}>
       {detail ? (
