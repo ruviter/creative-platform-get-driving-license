@@ -8,7 +8,7 @@ function Nav({setPage}) {
       <button className={styles.menu}>
         <FiMenu />
       </button>
-      <div className={styles.logo}>면허따자</div>
+      <div className={styles.logo} onClick={()=>{setPage(1)}}>면허따자</div>
       <div className={styles.buttons}>
         <button className={styles.qna} onClick={()=>{setPage(3)}}>Q&A</button>
         <button className={styles.login}>LOGIN</button>
