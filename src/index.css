@@ -2,7 +2,10 @@
   --color-accent: #00bfff;
   --color-font:#616161;
   --color-bg-white:white;
-  --color-white:white;
+  --color-bg-gray: rgba(255, 255, 255, 0.872);
+  --color-white:rgb(250, 250, 250);
+  --color-input: rgb(247, 252, 252);
+  --color-star: #ff4000;
   overflow: hidden;
 
 }
