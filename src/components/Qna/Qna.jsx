@@ -45,7 +45,7 @@ function Q({ title, content, id, badge }) {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: "center" ,
         }}
       >
         <div>
