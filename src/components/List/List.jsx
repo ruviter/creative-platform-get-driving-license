@@ -20,7 +20,7 @@ function Search({ onCompare }) {
   return (
     <>
       <form className={styles.form} action="submit">
-        <input type="text" />
+        <input type="text" placeholder="운전면허학원을 검색해 보세요"/>
         <button>
           <IoIosSearch />
         </button>

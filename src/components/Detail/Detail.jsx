@@ -8,11 +8,9 @@ function Detail({}) {
   return (
     <>
       <div className={styles.price}>
-        <Price title={'서울 자동차운전면허학원'}/>
+        <Price title={"서울 자동차운전면허학원"} />
       </div>
-      <div className={styles.route}>
-        <Route />
-      </div>
+
       <section className={styles.section}>
         <div className={styles.people}>
           <People />
@@ -21,6 +19,9 @@ function Detail({}) {
           <Details />
         </div>
       </section>
+      <div className={styles.route}>
+        <Route />
+      </div>
     </>
   );
 }
@@ -28,13 +29,11 @@ function Details() {
   return (
     <div style={{ flex: "1" }}>
       <div className={styles.title}>세부정보</div>
-      <p style={{ color: "black" }}>
-        학원소개글 : 저희학원은 친절한 서비스로 모시는 뭐시꺵이..
-      </p>
-      <p style={{ color: "black" }}>전화번호 : 031-325-3405</p>
-      <p style={{ color: "black" }}>
-        홈페이지 : https://encycolorpedia.kr/808080
-      </p>
+      <p>학원소개글 : 저희학원은 친절한 서비스로 모시는 뭐시꺵이..</p>
+      <p>상세주소 : 경기 의왕시 경수대로 321</p>
+      <p>영업시간 : 오전 9 : 00 ~ 오후 20 : 00</p>
+      <p>전화번호 : 031-325-3405</p>
+      <p>홈페이지 : https://encycolorpedia.kr/808080</p>
     </div>
   );
 }

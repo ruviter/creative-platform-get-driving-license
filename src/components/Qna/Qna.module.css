@@ -22,7 +22,7 @@
     padding: 10px;
     border-radius: 0.3rem;
     border: 1px solid rgb(221, 221, 221);
-    background-color: rgb(247, 252, 252);
+    background-color: var(--color-input);
     color: rgb(227, 75, 75);
     width: 100%;
     margin-bottom: 15px;

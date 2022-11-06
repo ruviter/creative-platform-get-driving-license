@@ -21,7 +21,7 @@
 }
 
 .star {
-  color: #ff4000;
+  color:var(--color-star);
   
 }
 
