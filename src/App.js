@@ -10,11 +10,11 @@ import Compare from "./components/Compare/Compare";
 import Qna from "./components/Qna/Qna";
 
 function App() {
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
 
   return (
     <div className={styles.App}>
-      <Nav />
+      <Nav setPage={setPage}/>
       {page === 1 ? (
         <FirstPage onNextPage={setPage} />
       ) : page === 2 ? (
