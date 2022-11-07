@@ -2,6 +2,7 @@ import React from "react";
 import License from "../License/License";
 import Location from "../Location/Location";
 import styles from "./FirstPage.module.css";
+import map from '../../../img/map.png'
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 function FirstPage({ onNextPage }) {
@@ -45,7 +46,7 @@ function Intro() {
           <p>어떤 학원을 갈지 천천히 골라봐~</p>
         </p>
       </div>
-      <img className={styles.img} src={imgSrc} />
+      <img className={styles.img} src={map} />
     </>
   );
 }
