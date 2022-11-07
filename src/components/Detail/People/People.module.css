@@ -7,4 +7,5 @@
 .people {
     display: flex;
     overflow: auto;
+    width: 450px;
 }
