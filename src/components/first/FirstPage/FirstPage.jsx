@@ -14,7 +14,7 @@ function FirstPage({ onNextPage }) {
         <Intro />
       </section>
       <section className={styles.sectionInfo}>
-        <Info/>
+        <Info onNextPage={onNextPage}/>
       </section>
       </div>
     </div>

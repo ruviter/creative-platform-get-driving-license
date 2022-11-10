@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './Info.module.css'
-function Info(props) {
+function Info({onNextPage}) {
   return (
     <>
       <form action="submit" className={styles.form}>
@@ -12,7 +12,7 @@ function Info(props) {
         <button className={styles.j1}>1종 운전면허</button>
         <button className={styles.j2}>2종 운전면허</button>
       </div>
-      <button className={styles.next}>운전면허학원 알아보기</button>
+      <button className={styles.next} onClick={()=>{onNextPage(2)}}>운전면허학원 알아보기</button>
     </>
   );
 }
