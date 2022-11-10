@@ -1,12 +1,10 @@
-import logo from "./logo.svg";
+import { useState } from "react";
 import styles from "./App.module.css";
 import Nav from "./components/Nav/Nav";
 import FirstPage from "./components/first/FirstPage/FirstPage";
-import { useState } from "react";
-
-import Qna from "./components/Qna/Qna";
-import { Map, MapMarker } from "react-kakao-maps-sdk";
 import SecondPage from "./components/second/SecondPage/SecondPage";
+import Qna from "./components/Qna/Qna";
+
 
 function App() {
   const [page, setPage] = useState(1);
@@ -22,15 +20,6 @@ function App() {
         <Qna />
       )}
     </div>
-  );
-}
-
-function SecPage() {
-  const [detail, setDetail] = useState(false);
-  const [compare, setCompare] = useState(false);
-  return (
-    <section className={styles.section}>
-         </section>
   );
 }
 
