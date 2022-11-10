@@ -8,15 +8,16 @@ function Qna(props) {
   return (
     <div className={styles.container}>
       <section className={styles.lists}>
-        <List title={"내 주변학원의 신규 후기"} />
-        <List title={"영수증 인증한 후기"} />
-        <List title={"인기글"} />
-        <List title={"다른 지역의 신규후기"} />
+        <List title={"영수증 인증한 후기"} bg={<RiSecurePaymentFill/>}/>
+        <List title={"내 주변학원의 신규 후기"} bg={''}/>
+        <List title={"인기글"} bg={''}/>
+        <List title={"다른 지역의 신규후기"} bg={''}/>
       </section>
       <section className={styles.qna}>
         <input type="text" placeholder={"Q. 질문을 올려보세요!"} />
         <Q />
         <A title={"구정이 나을듯?"} />
+        <A title={"가격고려 안하면은"} />
         <A title={"가격고려 안하면은"} />
         <div></div>
       </section>
@@ -24,10 +25,10 @@ function Qna(props) {
   );
 }
 
-function List({ title }) {
+function List({ title, bg }) {
   return (
     <div className={styles.list}>
-      <p>{title}</p>
+      <p>{title} <span>{bg}</span></p>
       <ul>
         <li>1.주변사람들한테 들은건데</li>
         <li>2.이건좀 아니라고 생각하는..</li>
@@ -60,7 +61,7 @@ function Q({ title, content, id, badge }) {
           </span>
         </span>
       </div>
-      <p>id : 두루두루치기치기</p>
+      <p>id : 두루취기</p>
       <p>
         가격적인 면에서는 2만원 차이라서 그렇게 신경쓸정도는 아니라고
         생각하거든? 근데 교통이랑 강사상태때문에 결정장애와서
@@ -87,7 +88,7 @@ function A({ title, content, id, badge }) {
           <RiSecurePaymentFill />
         </span>
       </div>
-      <p>id: 사라사라삿삿사</p>
+      <p>id: 사라삿사</p>
       <p>
         구정은 셔틀범위가 좁아서 범위 확인해보고, 아니면 대중교통타고가야 되는
         건데 그게 왕복으로 3000원씩해서 대충 7번 왔다갔다 하는 거니까

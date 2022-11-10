@@ -49,4 +49,8 @@
     font-weight: 800;
     border-top: 1.5px solid rgb(194, 194, 194);
   }
+
+  .star {
+    color: var(--color-star);
+  }
   

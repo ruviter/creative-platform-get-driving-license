@@ -16,6 +16,11 @@
     padding-bottom: 5px;
     border-bottom: 1px solid;
     font-weight: 550;
+    display: flex;
+    justify-content: space-between;
+}
+.list >span{
+  color: #00bfffae;
 }
 
 .qna > input{
