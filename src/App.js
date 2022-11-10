@@ -1,24 +1,23 @@
 import logo from "./logo.svg";
 import styles from "./App.module.css";
 import Nav from "./components/Nav/Nav";
-import Map from "./components/Map/Map";
-import List from "./components/List/List";
 import FirstPage from "./components/first/FirstPage/FirstPage";
 import { useState } from "react";
-import Detail from "./components/Detail/Detail";
-import Compare from "./components/Compare/Compare";
+
 import Qna from "./components/Qna/Qna";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
+import SecondPage from "./components/second/SecondPage/SecondPage";
 
 function App() {
   const [page, setPage] = useState(1);
 
   return (
     <div className={styles.App}>
-      <Nav setPage={setPage}/>
+      <Nav setPage={setPage} />
       {page === 1 ? (
         <FirstPage onNextPage={setPage} />
       ) : page === 2 ? (
-        <SecPage />
+        <SecondPage/>
       ) : (
         <Qna />
       )}
@@ -31,20 +30,7 @@ function SecPage() {
   const [compare, setCompare] = useState(false);
   return (
     <section className={styles.section}>
-      {detail ? (
-        <div className={styles.detail}>
-          <Detail />
-        </div>
-      ) : (
-        <>
-          <div className={styles.map}>
-            <Map />
-          </div>
-          <List onDetail={setDetail} onCompare={setCompare} />
-        </>
-      )}
-      {compare && <Compare setModalOpen={setCompare} />}
-    </section>
+         </section>
   );
 }
 

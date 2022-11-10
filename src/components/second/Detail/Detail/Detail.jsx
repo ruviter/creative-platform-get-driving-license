@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Detail.module.css";
-import People from "./People/People";
-import Price from "./Price/Price";
-import Route from "./Route/Route";
+import People from "../People/People";
+import Price from "../Price/Price";
+import Route from "../Route/Route";
 
 function Detail({}) {
   return (

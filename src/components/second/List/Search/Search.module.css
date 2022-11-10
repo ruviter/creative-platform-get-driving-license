@@ -1,0 +1,35 @@
+
+.form {
+    display: flex;
+    margin: 12px 12px;
+  }
+  
+  .form > input {
+    flex: 1;
+    padding: 6px;
+    border: 0;
+    background-color: var(--color-input);
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 0.3rem 0 0 0.3rem;
+  }
+  .form > button {
+    border-radius: 0 0.3rem 0.3rem 0;
+  }
+  
+  .classify {
+    color: black;
+    font-size: 0.8rem;
+    margin-left: 10px;
+  }
+  .classify > strong {
+    color: var(--color-accent);
+  }
+  .compare {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .compare > button {
+    margin: 10px 10px 0 0;
+    justify-self: left;
+  }
+  
