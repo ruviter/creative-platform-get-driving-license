@@ -12,7 +12,7 @@ function Search({onCompare}) {
         </button>
       </form>
       <div className={styles.classify}>
-        <strong>낮은 가격순</strong> / 높은 가격순 / 가까운 거리순 / 별점 높은순
+        <strong>낮은 가격순</strong> / 가까운 거리순 / 별점 높은순
       </div>
       <div className={styles.compare}>
         <button
