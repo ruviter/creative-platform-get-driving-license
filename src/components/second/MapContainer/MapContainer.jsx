@@ -2,37 +2,19 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import styles from "./MapContainer.module.css";
-
+import { list } from "../incheonSchoolList/list";
 const { kakao } = window;
+
 function MapContainer({ center }) {
-  const [currentP, setCurrentP] = useState({}) 
+  const [currentP, setCurrentP] = useState({});
+  const [map, setMap] = useState({});
   useEffect(() => {
-    const container = document.getElementById("myMap");
-    const options = {
-      center: new kakao.maps.LatLng(33.45, 126.57),
-      level: 3,
-    };
-    const map = new kakao.maps.Map(container, options);
-
-
-    const geocoder = new kakao.maps.services.Geocoder();
-
-    geocoder.addressSearch("내손로 14", (result, status) => { // 검색결과 마크 띄우기
-      if (status === kakao.maps.services.Status.OK) { 
-        const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-        console.log(result[0].y, result[0].x)
-
-        const marker = new kakao.maps.Marker({ map: map, position: coords });
-
-        const infowindow = new kakao.maps.InfoWindow({
-          content:
-            '<div style="width:150px;text-align:center;padding:6px 0;">우리 집</div>',
-        });
-
-        infowindow.open(map,marker)
-      }
-    });
+    createMap(setMap);
   }, []);
+  useEffect(() => {
+    schoolMarkers(map);
+    // searchMap("내손로 14", map);
+  }, [map]);
   return (
     <>
       <div
@@ -44,13 +26,62 @@ function MapContainer({ center }) {
   );
 }
 
+const imageSrc =
+  "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+const imageSize = new kakao.maps.Size(24, 35);
+const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
-const list = [
-  {title:'동아 자동차운전전문학원'},
-  {title:'인기 자동차운전전문학원'},
-  {title:'인천 자동차운전전문학원'},
-  {title:'강우주 자동차운전전문학원'},
-  {title:'시엘 자동차운전전문학원'},
-]
+const createMap = (setMap) => {
+  const container = document.getElementById("myMap");
+  const options = {
+    center: new kakao.maps.LatLng(33.45, 126.57),
+    level: 3,
+  };
+  setMap(new kakao.maps.Map(container, options));
+};
+
+const schoolMarkers = (map) => {
+  let newList = [];
+  list.map(({ name }) => {
+    const ps = new kakao.maps.services.Places();
+    ps.keywordSearch(name, placesSearchCB);
+    function placesSearchCB(data, status, pagination) {
+      const iwContent = `<div>${name}</div>`;
+      const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
+      if (status === kakao.maps.services.Status.OK) {
+        newList = [...newList,{[name]:data}]
+        const markerPosition = new kakao.maps.LatLng(data[0].y, data[0].x);
+        const marker = new kakao.maps.Marker({
+          position: markerPosition,
+          title: name,
+          image: markerImage,
+        });
+        marker.setMap(map);
+        infowindow.open(map, marker);
+      }
+      console.log(newList);
+    }
+  });
+};
+
+const searchMap = (keyword, map) => {
+  const geocoder = new kakao.maps.services.Geocoder();
+
+  geocoder.addressSearch(keyword, (result, status) => {
+    // 검색결과 마크 띄우기
+    if (status === kakao.maps.services.Status.OK) {
+      const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+      const marker = new kakao.maps.Marker({ map: map, position: coords });
+
+      const infowindow = new kakao.maps.InfoWindow({
+        content:
+          '<div style="width:150px;text-align:center;padding:6px 0;">우리 집</div>',
+      });
+
+      infowindow.open(map, marker);
+    }
+  });
+};
 
 export default MapContainer;
