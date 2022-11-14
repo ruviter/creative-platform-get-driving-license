@@ -13,7 +13,7 @@ function MapContainer({ center }) {
   }, []);
   useEffect(() => {
     schoolMarkers(map);
-    // searchMap("내손로 14", map);
+    searchMap("내손로 14", map);
   }, [map]);
   return (
     <>
@@ -35,13 +35,27 @@ const createMap = (setMap) => {
   const container = document.getElementById("myMap");
   const options = {
     center: new kakao.maps.LatLng(33.45, 126.57),
-    level: 3,
+    level: 7,
   };
-  setMap(new kakao.maps.Map(container, options));
+  const map =new kakao.maps.Map(container, options) 
+  setMap(map);
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position)=>{
+      const lat = position.coords.latitude
+      const lon = position.coords.longitude
+
+      const locPosition = new kakao.maps.LatLng(lat, lon)
+      map.setCenter(locPosition)
+    })
+  } else {
+    const locPosition = new kakao.maps.LatLng(37.3817847 , 126.6677834)
+    map.setCenter(locPosition)
+  }
 };
 
 const schoolMarkers = (map) => {
-  let newList = [];
+  let newList = {};
   list.map(({ name }) => {
     const ps = new kakao.maps.services.Places();
     ps.keywordSearch(name, placesSearchCB);
@@ -49,7 +63,7 @@ const schoolMarkers = (map) => {
       const iwContent = `<div>${name}</div>`;
       const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
       if (status === kakao.maps.services.Status.OK) {
-        newList = [...newList,{[name]:data}]
+        newList = {...newList,[name]:data[0]}
         const markerPosition = new kakao.maps.LatLng(data[0].y, data[0].x);
         const marker = new kakao.maps.Marker({
           position: markerPosition,
