@@ -2,13 +2,10 @@ import React from "react";
 import Price from "../Detail/Price/Price";
 import styles from "./Compare.module.css";
 
-function Compare({ setModalOpen }) {
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+function Compare({ onClose }) {
   return (
     <div className={styles.container}>
-      <button className={styles.close} onClick={closeModal}>
+      <button className={styles.close} onClick={() => onClose(false)}>
         X
       </button>
       <div>
@@ -29,13 +26,15 @@ function CompareDetail({ title }) {
     <table>
       <caption>{title}</caption>
       <tr>
-          <td>강사 평균 별점 </td>
-          <td><span className={styles.star}>★★★☆☆</span></td>
-        </tr>
-        <tr>
-          <td>학원까지 거리</td>
-          <td>1.5km</td>
-        </tr>
+        <td>강사 평균 별점 </td>
+        <td>
+          <span className={styles.star}>★★★☆☆</span>
+        </td>
+      </tr>
+      <tr>
+        <td>학원까지 거리</td>
+        <td>1.5km</td>
+      </tr>
       <tbody>
         <tr className={styles.sum}>
           <td>수강료 (등록비)</td>

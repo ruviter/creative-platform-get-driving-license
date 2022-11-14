@@ -4,9 +4,12 @@ import People from "../People/People";
 import Price from "../Price/Price";
 import Route from "../Route/Route";
 
-function Detail({}) {
+function Detail({onClose}) {
   return (
-    <>
+    <div className={styles.container}>
+      <button className={styles.close} onClick={() => onClose(false)}>
+        X
+      </button>
       <div className={styles.price}>
         <Price title={"서울 자동차운전면허학원"} />
       </div>
@@ -22,7 +25,7 @@ function Detail({}) {
       <div className={styles.route}>
         <Route />
       </div>
-    </>
+    </div>
   );
 }
 function Details() {

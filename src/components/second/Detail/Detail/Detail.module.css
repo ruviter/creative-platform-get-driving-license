@@ -1,36 +1,66 @@
+.container {
+  /* 모달창 크기 */
+  width: 1300px;
+  height: 600px;
+
+  /* 최상단 위치 */
+  z-index: 999;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* 모달창 디자인 */
+  background-color: var(--color-white);
+  border: 1px solid black;
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30px;
+}
+
+/* 모달창 내부 X버튼 */
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
 .price {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    margin-right: -20px;
-    height: 85%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-right: -20px;
+  height: 85%;
 }
 .route {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    border-left: 1px solid rgb(177, 177, 177);
-    padding-left: 0px;
-    margin-left: -10px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  border-left: 1px solid rgb(177, 177, 177);
+  padding-left: 0px;
+  margin-left: -10px;
 }
 .section {
-    border-left: 1px solid rgb(190, 190, 190);
-    padding-left: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  border-left: 1px solid rgb(190, 190, 190);
+  padding-left: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .people {
-    flex: 1;
+  flex: 1;
 }
 
 .details {
-    flex: 1;
+  flex: 1;
 }
 
 .title {
-    font-family: "GongGothicMedium";
-    font-size: 1.3rem;
-    margin-bottom: 10px;
+  font-family: "GongGothicMedium";
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }
