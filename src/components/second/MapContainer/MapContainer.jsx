@@ -13,6 +13,7 @@ function MapContainer({ center }) {
   }, []);
   useEffect(() => {
     schoolMarkers(map);
+    currentLocation(map);
     searchMap("내손로 14", map);
   }, [map]);
   return (
@@ -37,31 +38,48 @@ const createMap = (setMap) => {
     center: new kakao.maps.LatLng(33.45, 126.57),
     level: 6,
   };
-  const map =new kakao.maps.Map(container, options) 
+  const map = new kakao.maps.Map(container, options);
   setMap(map);
+};
 
+const currentLocation = (map) => {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position)=>{
-      const lat = position.coords.latitude
-      const lon = position.coords.longitude
+    navigator.geolocation.getCurrentPosition((position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
 
-      const locPosition = new kakao.maps.LatLng(lat, lon)
-      map.setCenter(locPosition)
-    })
+      const locPosition = new kakao.maps.LatLng(lat, lon);
+
+      map.setCenter(locPosition);
+
+      const marker = new kakao.maps.Marker({
+        position: locPosition,
+      });
+      marker.setMap(map);
+      marker.setDraggable(true);
+    });
   } else {
-    const locPosition = new kakao.maps.LatLng(37.3817847 , 126.6677834)
-    map.setCenter(locPosition)
+    const locPosition = new kakao.maps.LatLng(37.3817847, 126.6677834);
+    const marker = new kakao.maps.Marker({
+      position: locPosition,
+    });
+
+    map.setCenter(locPosition);
+
+    marker.setMap(map);
+    marker.setDraggable(true);
   }
-}
+};
 
 const schoolMarkers = (map) => {
   Object.keys(list).map((name) => {
     const ps = new kakao.maps.services.Places();
     ps.keywordSearch(name, placesSearchCB);
-    
+
     function placesSearchCB(data, status, pagination) {
       const iwContent = `<div>${name}</div>`;
       const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
+
       if (status === kakao.maps.services.Status.OK) {
         const markerPosition = new kakao.maps.LatLng(data[0].y, data[0].x);
         const marker = new kakao.maps.Marker({
