@@ -1,36 +1,35 @@
 .container {
-    /* 모달창 크기 */
-    width: 700px;
-    height: 600px;
-  
-    /* 최상단 위치 */
-    z-index: 999;
-  
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  
-    /* 모달창 디자인 */
-    background-color: var(--color-white);
-    border: 0;
-    border-radius: 0.3rem;
-  
-    box-shadow: 1px 1px 19px 13px rgba(0,0,0,0.19);
-  
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding-top: 30px;
-  }
-  
-  /* 모달창 내부 X버튼 */
-  .close {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-  }
+  /* 모달창 크기 */
+  width: 740px;
+  height: 600px;
+
+  /* 최상단 위치 */
+  z-index: 999;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* 모달창 디자인 */
+  background-color: var(--color-bg-white);
+  border: 0;
+  border-radius: 0.3rem;
+
+  box-shadow: 1px 1px 19px 13px rgba(0, 0, 0, 0.19);
+
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+/* 모달창 내부 X버튼 */
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
 .person {
   margin: 10px;
   padding: 10px;
@@ -47,9 +46,44 @@
 }
 
 .star {
-  color: rgb(249, 211, 0);
+  color: var(--color-star);
 }
 
 .person > button {
   width: 100%;
+}
+
+.ul {
+  padding: 0px 60px;
+  overflow: auto;
+}
+
+.li {
+  background-color: var(--color-bg-white);
+  margin: 20px 0;
+  padding-top: 25px;
+  border-top: 1px solid rgba(127, 127, 127, 0.317);
+}
+
+.starNcert {
+  display: flex;
+  font-size: 0.9rem;
+  justify-content: space-between;
+}
+
+
+
+.cert {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+}
+
+.id {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin: 10px 0;
+}
+
+.content {
+  font-size: 0.9rem;
 }

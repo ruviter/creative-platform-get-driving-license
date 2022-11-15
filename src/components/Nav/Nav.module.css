@@ -33,7 +33,8 @@
 .form > input {
   padding: 17px 15px;
   border: 0;
-  background-color: var(--color-bg-white);
+  border-radius: 0.3rem;
+  background-color: var(--color-input);
   margin: 5px 0;
   font-size: 1.2rem;
 }

@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import styles from "./Person.module.css";
 
-function Person({ inf }) {
+function Person({ teacher }) {
   const imgSrc =
     "https://file.mk.co.kr/meet/neds/2021/07/image_readmed_2021_659579_16257086594710103.jpg";
-  const { img, name, star } = inf;
+  const { img, name, star, reviews } = teacher;
   const [review, setReview] = useState(false);
   return (
     <div className={styles.person}>
@@ -19,28 +19,36 @@ function Person({ inf }) {
       >
         상세리뷰
       </button>
-      {review && <Review onClose={setReview} />}
+      {review && <Review onClose={setReview} reviews={reviews}/>}
     </div>
   );
 }
 
-function Review({ onClose }) {
+function Review({ onClose, reviews }) {
   return (
     <div className={styles.container}>
       <button className={styles.close} onClick={() => onClose(false)}>
         X
       </button>
-      <ul>
-        <li>
-            <div>아이디 : 수다쟁이</div>
-            <div>
-            <span>별점: </span> <span>영수증 인증한 리뷰</span>
+      <div></div>
+      <ul className={styles.ul}>
+        {Object.keys(reviews).map((r) => (
+          <li key={r} className={styles.li}>
+            <div className={styles.starNcert}>
+              <span className={styles.star}>{reviews[r].star} </span>{" "}
+              <span className={styles.cert}>{reviews[r].cert}</span>
             </div>
-            <div>너무 친절하게 잘 대해주셔서 한번에 합격했어요..!! 진짜 강추!!</div>
-
-        </li>
+            <div className={styles.id}>id : {reviews[r].id}</div>
+            <div className={styles.content}>{reviews[r].content}</div>
+            <div className={styles.starNcert}>
+              <span className={styles.sta}>리뷰가 도움이 됐나요?</span>{" "}
+              <button>도움이 됬어요</button>
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );
 }
+
 export default Person;
