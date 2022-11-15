@@ -1,7 +1,7 @@
 .container {
   /* 모달창 크기 */
-  width: 700px;
-  height: 500px;
+  width: 500px;
+  height: 400px;
 
   /* 최상단 위치 */
   z-index: 999;
@@ -13,13 +13,42 @@
 
   /* 모달창 디자인 */
   background-color: var(--color-white);
-  border: 1px solid black;
+  border: 0;
   border-radius: 8px;
+
+  box-shadow: 1px 1px 19px 13px rgba(0,0,0,0.19);
 
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding-top: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px 70px 40px;
+}
+
+.form > input {
+  padding: 17px 15px;
+  border: 0;
+  background-color: var(--color-bg-white);
+  margin: 5px 0;
+  font-size: 1.2rem;
+}
+
+.form > div {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 0.8rem;
+  color: rgb(249, 100, 58);
+  margin: 4px;
+}
+
+.form > button {
+  margin: 5px 0;
+  padding: 6px;
+  font-size: 1.2rem;
 }
 
 /* 모달창 내부 X버튼 */
@@ -65,9 +94,7 @@
   display: flex;
   align-items: center;
 }
-.qna,
-.login,
-.sign {
+.buttons > button{
   cursor: pointer;
   background-color: transparent;
   color: var(--color-accent);
