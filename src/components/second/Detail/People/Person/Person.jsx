@@ -35,7 +35,8 @@ function Person({ name, setTeachers, teachers }) {
 function Review({ onClose, name, reviews, setTeachers, teachers }) {
   const onWReview = (e) => {
     e.preventDefault();
-    const content = e.target.value;
+    console.log(e.target[0].value)
+    const content = e.target[0].value;
     const star = "★ ★ ★ ★ ★";
     const id = "아이디";
     const cert = "영수증 인증한 리뷰";
