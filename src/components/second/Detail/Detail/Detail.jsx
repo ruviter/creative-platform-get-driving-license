@@ -6,7 +6,7 @@ import Route from "../Route/Route";
 
 function Detail({onClose}) {
   return (
-    <div className={styles.container}>
+    <>
       <button className={styles.close} onClick={() => onClose(false)}>
         X
       </button>
@@ -25,7 +25,7 @@ function Detail({onClose}) {
       <div className={styles.route}>
         <Route />
       </div>
-    </div>
+    </>
   );
 }
 function Details() {

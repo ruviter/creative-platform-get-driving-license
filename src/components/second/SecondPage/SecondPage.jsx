@@ -12,13 +12,19 @@ function SecondPage({}) {
   const [list, setList] = useState(initialList);
   return (
     <section className={styles.section}>
-      {detail && <Detail onClose={setDetail} />}
-      <>
-        <div className={styles.map}>
-          <MapContainer />
+      {detail ? (
+        <div className={styles.detail}>
+          <Detail onClose={setDetail} />
         </div>
-        <List onDetail={setDetail} onCompare={setCompare}  inf={list} />
-      </>
+        
+      ) : (
+        <>
+          <div className={styles.map}>
+            <MapContainer />
+          </div>
+          <List onDetail={setDetail} onCompare={setCompare} inf={list} />
+        </>
+      )}
       {compare && <Compare onClose={setCompare} />}
     </section>
   );
