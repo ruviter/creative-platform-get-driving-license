@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Nav.module.css";
 import { FiMenu } from "react-icons/fi";
+import { BsPersonCircle } from "react-icons/bs";
 import { useState } from "react";
 
 function Nav({ setPage }) {
@@ -28,17 +29,30 @@ function Nav({ setPage }) {
         >
           Q&A
         </button>
-        {auth ? null : (
+        {auth ? (
+          <>
+            <button style={{fontSize:'1rem', display:'flex', alignItems:'center'}}>
+              <span style={{marginRight:'7px'}}>asdf </span>
+              <BsPersonCircle />
+            </button>
+            <button
+              onClick={() => {
+                setAuth(false);
+              }}
+            >
+              LOG OUT
+            </button>
+          </>
+        ) : (
           <>
             <button
-              className={styles.login}
               onClick={() => {
                 setLogin(true);
               }}
             >
               LOGIN
             </button>
-            <button className={styles.sign}>SIGN UP</button>
+            <button>SIGN UP</button>
           </>
         )}
       </div>
@@ -55,11 +69,20 @@ function Login({ onClose, onAuth }) {
     const pw = e.target[1].value;
     if (pw === "") {
       setWarn("패스워드를 입력하세요");
+      return;
     }
     if (id === "") {
       setWarn("아이디를 입력하세요");
+      return;
     }
-
+    if (id !== "asdf") {
+      setWarn("존재하지 않는 아이디 입니다");
+      return;
+    }
+    if (id === "asdf" && pw !== "1234") {
+      setWarn("패스워드를 잘 못 입력했습니다");
+      return;
+    }
     if (id === "asdf" && pw === "1234") {
       console.log("login!");
       onAuth(true);
