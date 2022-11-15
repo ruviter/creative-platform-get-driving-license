@@ -16,7 +16,6 @@ function SecondPage({}) {
         <div className={styles.detail}>
           <Detail onClose={setDetail} />
         </div>
-        
       ) : (
         <>
           <div className={styles.map}>
