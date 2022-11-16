@@ -11,12 +11,11 @@ function MapContainer({ center }) {
   const [map, setMap] = useState({});
   useEffect(() => {
     getCurrentLocation(setCurrentL);
+    createMap(setMap, currentL, setCurrentMarker);
   }, []);
   useEffect(()=>{
-    createMap(setMap, currentL);
-  },[currentL])
+  },[map,currentL])
   useEffect(() => {
-    // createCurrentMarker(map, currentL, setCurrentMarker);
     // schoolMarkers(map);
     // searchMap("내손로 14", map);
   }, [map]);
@@ -31,17 +30,6 @@ function MapContainer({ center }) {
   );
 }
 
-
-const createMap = (setMap, currentL) => {
-  const container = document.getElementById("myMap");
-  const options = {
-    center: currentL.kakaoLatLng,
-    level: 6,
-  };
-  const map = new kakao.maps.Map(container, options);
-  setMap(map);
-};
-
 const getCurrentLocation = (setCurrentL) => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -52,6 +40,19 @@ const getCurrentLocation = (setCurrentL) => {
       setCurrentL({ lat, lon, kakaoLatLng });
     });
   }
+};
+
+const createMap = (setMap, currentL, setCurrentMarker) => {
+  const container = document.getElementById("myMap");
+  const options = {
+    center: currentL.kakaoLatLng,
+    level: 6,
+  };
+  const map = new kakao.maps.Map(container, options);
+  
+  createCurrentMarker(map,currentL,setCurrentMarker)
+
+  setMap(map);
 };
 
 const createCurrentMarker = (map, currentL, setCurrentMarker) => {
