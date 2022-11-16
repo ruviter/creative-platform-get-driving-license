@@ -13,6 +13,22 @@ function MapContainer({ setDisList }) {
   useEffect(() => {
     createMap(setMap, setCurrentL, setCurrentMarker, setDisList);
   }, []);
+  useEffect(()=>{
+    const dis = [];
+      Object.keys(list).map((name) => {
+        const ps = new kakao.maps.services.Places();
+        ps.keywordSearch(name, placesSearchCB, {
+          size: 1,
+          location:currentL,
+        });
+    
+        function placesSearchCB(data, status, pagination) {
+          dis.push({ name: name, d: data[0].distance });
+          dis.sort((a, b) => a.d - b.d);
+        }
+      });
+      setDisList(dis);
+  },[currentL])
 
   return (
     <>
