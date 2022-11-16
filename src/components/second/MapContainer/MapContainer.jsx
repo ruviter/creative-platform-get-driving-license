@@ -9,10 +9,9 @@ function MapContainer({ center }) {
   const [map, setMap] = useState({});
   const [currentL, setCurrentL] = useState(defaultLocation);
   const [currentMarker, setCurrentMarker] = useState({});
-  const [disList, setDisList] = useState({defaultDisList});
+  const [disList, setDisList] = useState({ defaultDisList });
   useEffect(() => {
-    getCurrentLocation(setCurrentL);
-    createMap(setMap, currentL, setCurrentMarker, setDisList);
+    createMap(setMap, setCurrentL, setCurrentMarker, setDisList);
   }, []);
 
   return (
@@ -26,41 +25,84 @@ function MapContainer({ center }) {
   );
 }
 
-const getCurrentLocation = (setCurrentL) => {
+const createMap = (setMap, setCurrentL, setCurrentMarker, setDisList) => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
       const kakaoLatLng = new kakao.maps.LatLng(lat, lon);
-
       setCurrentL({ lat, lon, kakaoLatLng });
+
+
+      // create map
+      const container = document.getElementById("myMap");
+      const options = {
+        center: kakaoLatLng,
+        level: 6,
+      };
+      const map = new kakao.maps.Map(container, options);
+
+
+      // create current marker 
+      const currentMarker = new kakao.maps.Marker({
+        position: kakaoLatLng,
+        title: "현 위치",
+        draggable: true,
+        map: map,
+      });
+      setCurrentMarker(currentMarker);
+
+
+      // create distance basic list 
+      const dis = [];
+      Object.keys(list).map((name) => {
+        const ps = new kakao.maps.services.Places();
+        ps.keywordSearch(name, placesSearchCB, {
+          x: lon,
+          y: lat,
+          size: 1,
+        });
+    
+        function placesSearchCB(data, status, pagination) {
+          dis.push({ name: name, d: data[0].distance });
+          dis.sort((a, b) => a.d - b.d);
+        }
+      });
+      setDisList(dis);
+
+
+      // create school marker
+      Object.keys(list).map((name) => {
+        const ps = new kakao.maps.services.Places();
+        ps.keywordSearch(name, placesSearchCB, {
+          x: lon,
+          y: lat,
+          size: 1,
+        });
+    
+        function placesSearchCB(data, status, pagination) {
+          const iwContent = `<div>${name}</div>`;
+          const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
+    
+          if (status === kakao.maps.services.Status.OK) {
+            const markerPosition = new kakao.maps.LatLng(data[0].y, data[0].x);
+            const marker = new kakao.maps.Marker({
+              position: markerPosition,
+              title: name,
+              image: markerImage,
+            });
+            marker.setMap(map);
+            infowindow.open(map, marker);
+          }
+        }
+      });
+
+      setMap(map);
     });
   }
 };
 
-const createMap = (setMap, currentL, setCurrentMarker, setDisList) => {
-  const container = document.getElementById("myMap");
-  const options = {
-    center: currentL.kakaoLatLng,
-    level: 6,
-  };
-  const map = new kakao.maps.Map(container, options);
-
-  createCurrentMarker(map, currentL, setCurrentMarker);
-  setDisList(map, currentL, setDisList);
-  setMap(map);
-};
-
-const createCurrentMarker = (map, currentL, setCurrentMarker) => {
-  const locPosition = new kakao.maps.LatLng(currentL.lat, currentL.lon);
-  const marker = new kakao.maps.Marker({
-    position: locPosition,
-    title: "현 위치",
-    draggable: true,
-    map: map,
-  });
-  setCurrentMarker(marker);
-};
+const createCurrentMarker = (map, currentL, setCurrentMarker) => {};
 
 const setDisList = (map, currentL, setDisList) => {
   const dis = [];
@@ -75,19 +117,19 @@ const setDisList = (map, currentL, setDisList) => {
     function placesSearchCB(data, status, pagination) {
       dis.push({ name: name, d: data[0].distance });
       dis.sort((a, b) => a.d - b.d);
-      // const iwContent = `<div>${name}</div>`;
-      // const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
+      const iwContent = `<div>${name}</div>`;
+      const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
 
-      // if (status === kakao.maps.services.Status.OK) {
-      //   const markerPosition = new kakao.maps.LatLng(data[0].y, data[0].x);
-      //   const marker = new kakao.maps.Marker({
-      //     position: markerPosition,
-      //     title: name,
-      //     image: markerImage,
-      //   });
-      //   marker.setMap(map);
-      //   infowindow.open(map, marker);
-      // }
+      if (status === kakao.maps.services.Status.OK) {
+        const markerPosition = new kakao.maps.LatLng(data[0].y, data[0].x);
+        const marker = new kakao.maps.Marker({
+          position: markerPosition,
+          title: name,
+          image: markerImage,
+        });
+        marker.setMap(map);
+        infowindow.open(map, marker);
+      }
     }
   });
   setDisList(dis);
@@ -125,33 +167,33 @@ const defaultLocation = {
 
 const defaultDisList = [
   {
-      "name": "한빛자동차운전전문학원",
-      "d": "21644"
+    name: "한빛자동차운전전문학원",
+    d: "21644",
   },
   {
-      "name": "e현대자동차운전전문학원",
-      "d": "21822"
+    name: "e현대자동차운전전문학원",
+    d: "21822",
   },
   {
-      "name": "동아자동차운전전문학원",
-      "d": "23985"
+    name: "동아자동차운전전문학원",
+    d: "23985",
   },
   {
-      "name": "인기자동차운전전문학원",
-      "d": "24346"
+    name: "인기자동차운전전문학원",
+    d: "24346",
   },
   {
-      "name": "주신자동차운전전문학원",
-      "d": "30755"
+    name: "주신자동차운전전문학원",
+    d: "30755",
   },
   {
-      "name": "인천자동차운전전문학원",
-      "d": "31295"
+    name: "인천자동차운전전문학원",
+    d: "31295",
   },
   {
-      "name": "시엘자동차운전전문학원",
-      "d": "31348"
-  }
-]
+    name: "시엘자동차운전전문학원",
+    d: "31348",
+  },
+];
 
 export default MapContainer;
