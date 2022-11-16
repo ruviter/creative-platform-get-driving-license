@@ -15,7 +15,7 @@ function Nav({ setPage }) {
       <div
         className={styles.logo}
         onClick={() => {
-          setPage(1);
+          setPage(2);
         }}
       >
         면허따자

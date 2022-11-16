@@ -7,14 +7,12 @@ import Qna from "./components/Qna/Qna";
 
 
 function App() {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
 
   return (
     <div className={styles.App}>
       <Nav setPage={setPage} />
-      {page === 1 ? (
-        <FirstPage onNextPage={setPage} />
-      ) : page === 2 ? (
+      {page === 2 ? (
         <SecondPage/>
       ) : (
         <Qna />
