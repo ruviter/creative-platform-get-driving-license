@@ -34,9 +34,25 @@
 .details {
   flex: 1;
 }
+.detailsContainer > p {
+  margin-bottom: -5px;
+}
 
 .title {
   font-family: "GongGothicMedium";
   font-size: 1.3rem;
   margin-bottom: 10px;
+}
+
+.icons{
+  font-size: 1.6rem;
+  
+}
+.iconsDesc {
+  font-size: 0.7rem;
+}
+.icons ,.iconsDesc {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 30px;
 }
