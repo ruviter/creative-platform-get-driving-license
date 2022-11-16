@@ -5,11 +5,11 @@ import styles from "./MapContainer.module.css";
 import { list } from "../incheonSchoolList/list";
 const { kakao } = window;
 
-function MapContainer({ center }) {
+function MapContainer({ setDisList }) {
   const [map, setMap] = useState({});
   const [currentL, setCurrentL] = useState(defaultLocation);
   const [currentMarker, setCurrentMarker] = useState({});
-  const [disList, setDisList] = useState({ defaultDisList });
+  // const [disList, setDisList] = useState({ defaultDisList });
   useEffect(() => {
     createMap(setMap, setCurrentL, setCurrentMarker, setDisList);
   }, []);

@@ -10,6 +10,7 @@ function SecondPage({}) {
   const [detail, setDetail] = useState(false);
   const [compare, setCompare] = useState(false);
   const [list, setList] = useState(initialList);
+  const [disList, setDisList] = useState(initialList);
   return (
     <section className={styles.section}>
       {detail ? (
@@ -19,7 +20,7 @@ function SecondPage({}) {
       ) : (
         <>
           <div className={styles.map}>
-            <MapContainer />
+            <MapContainer setDisList={setDisList} />
           </div>
           <List onDetail={setDetail} onCompare={setCompare} inf={list} />
         </>
