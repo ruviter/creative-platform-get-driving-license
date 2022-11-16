@@ -14,11 +14,7 @@ function MapContainer({ center }) {
     getCurrentLocation(setCurrentL);
     createMap(setMap, currentL, setCurrentMarker, setDistances);
   }, []);
-  useEffect(()=>{
-  },[map,currentL])
-  useEffect(() => {
-    // searchMap("내손로 14", map);
-  }, [map]);
+
   return (
     <>
       <div
@@ -51,7 +47,8 @@ const createMap = (setMap, currentL, setCurrentMarker, setDistances) => {
   const map = new kakao.maps.Map(container, options);
   
   createCurrentMarker(map,currentL,setCurrentMarker)
-  schoolMarkers(map,currentL, setDistances);
+  const disList = setDisList(map,currentL, setDistances);
+  console.log(disList)
   setMap(map);
 };
 
@@ -66,7 +63,7 @@ const createCurrentMarker = (map, currentL, setCurrentMarker) => {
   setCurrentMarker(marker)
 };
 
-const schoolMarkers = (map, currentL, setDistances) => {
+const setDisList = (map, currentL, setDistances) => {
   const dis = []
   Object.keys(list).map((name) => {
     const ps = new kakao.maps.services.Places();
@@ -75,26 +72,27 @@ const schoolMarkers = (map, currentL, setDistances) => {
       y:currentL.lat,
       size:1,
     });
-    
+
     function placesSearchCB(data, status, pagination) {
-      dis.push({name:[name],d:data[0].distance})
+      dis.push({name:name,d:data[0].distance})
       dis.sort((a,b)=>a.d-b.d)
-      const iwContent = `<div>${name}</div>`;
-      const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
+      // const iwContent = `<div>${name}</div>`;
+      // const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
       
-      if (status === kakao.maps.services.Status.OK) {
-        const markerPosition = new kakao.maps.LatLng(data[0].y, data[0].x);
-        const marker = new kakao.maps.Marker({
-          position: markerPosition,
-          title: name,
-          image: markerImage,
-        });
-        marker.setMap(map);
-        infowindow.open(map, marker);
-      }
+      // if (status === kakao.maps.services.Status.OK) {
+      //   const markerPosition = new kakao.maps.LatLng(data[0].y, data[0].x);
+      //   const marker = new kakao.maps.Marker({
+      //     position: markerPosition,
+      //     title: name,
+      //     image: markerImage,
+      //   });
+      //   marker.setMap(map);
+      //   infowindow.open(map, marker);
+      // }
     }
   });
-  console.log(dis)
+  setDistances(dis)
+  return dis
 };
 
 const searchMap = (keyword, map) => {
