@@ -68,16 +68,18 @@ const createCurrentMarker = (map, currentL, setCurrentMarker) => {
 };
 
 const schoolMarkers = (map, currentL, setDistances) => {
-  const dis = {}
+  const dis = []
   Object.keys(list).map((name) => {
     const ps = new kakao.maps.services.Places();
     ps.keywordSearch(name, placesSearchCB,{
       x:currentL.lon,
       y:currentL.lat,
+      size:1,
     });
     
     function placesSearchCB(data, status, pagination) {
-      console.log(data[0].distance)
+      dis.push({[name]:data[0].distance})
+
       const iwContent = `<div>${name}</div>`;
       const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
       
@@ -93,6 +95,7 @@ const schoolMarkers = (map, currentL, setDistances) => {
       }
     }
   });
+  console.log(dis)
 };
 
 const searchMap = (keyword, map) => {
