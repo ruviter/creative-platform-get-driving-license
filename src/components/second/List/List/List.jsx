@@ -6,23 +6,26 @@ import Search from "../Search/Search";
 import { list } from "../../incheonSchoolList/list";
 import { useState } from "react";
 import { useEffect } from "react";
+import Compare from "../../Compare/Compare";
 
-function List({ onDetail, onCompare, disList }) {
+function List({ onDetail, disList }) {
   const [filter, setFilter] = useState(0);
+  const [compare, setCompare] = useState(false);
   const [sortedList, setSortedList] = useState(initSortedList);
   useEffect(() => {
     filting(filter, disList, setSortedList);
   }, [filter]);
   return (
     <div className={styles.List}>
-      <Search onCompare={onCompare} onFilter={setFilter} filterValue={filter} />
+      <Search onCompare={setCompare} onFilter={setFilter} filterValue={filter} />
       <ul>
         {sortedList.map((name, index) =>
           index < 4 ? (
-            <Item name={name} disList={disList} onDetail={onDetail} />
+            <Item  name={name} disList={disList} onDetail={onDetail} />
           ) : null
         )}
       </ul>
+      {compare && <Compare onClose={setCompare} />}
     </div>
   );
 }

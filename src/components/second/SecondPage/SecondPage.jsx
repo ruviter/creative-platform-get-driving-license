@@ -8,7 +8,6 @@ import MapContainer from "../MapContainer/MapContainer";
 
 function SecondPage({}) {
   const [detail, setDetail] = useState(false);
-  const [compare, setCompare] = useState(false);
   const [list, setList] = useState(initialList);
   const [disList, setDisList] = useState(defaultDisList);
   return (
@@ -22,10 +21,9 @@ function SecondPage({}) {
           <div className={styles.map}>
             <MapContainer setDisList={setDisList} />
           </div>
-          <List onDetail={setDetail} onCompare={setCompare} disList={disList} />
+          <List onDetail={setDetail} disList={disList} />
         </>
       )}
-      {compare && <Compare onClose={setCompare} />}
     </section>
   );
 }
