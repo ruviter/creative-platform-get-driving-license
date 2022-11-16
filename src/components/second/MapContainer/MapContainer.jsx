@@ -77,8 +77,8 @@ const schoolMarkers = (map, currentL, setDistances) => {
     });
     
     function placesSearchCB(data, status, pagination) {
-      dis.push({[name]:data[0].distance})
-
+      dis.push({name:[name],d:data[0].distance})
+      dis.sort((a,b)=>a.d-b.d)
       const iwContent = `<div>${name}</div>`;
       const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
       
