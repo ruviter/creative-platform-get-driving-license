@@ -10,7 +10,7 @@ function SecondPage({}) {
   const [detail, setDetail] = useState(false);
   const [compare, setCompare] = useState(false);
   const [list, setList] = useState(initialList);
-  const [disList, setDisList] = useState(initialList);
+  const [disList, setDisList] = useState(defaultDisList)
   return (
     <section className={styles.section}>
       {detail ? (
@@ -22,14 +22,43 @@ function SecondPage({}) {
           <div className={styles.map}>
             <MapContainer setDisList={setDisList} />
           </div>
-          <List onDetail={setDetail} onCompare={setCompare} inf={list} />
+          <List onDetail={setDetail} onCompare={setCompare} disList={disList} />
         </>
       )}
       {compare && <Compare onClose={setCompare} />}
     </section>
   );
 }
-
+const defaultDisList = [
+  {
+    name: "한빛자동차운전전문학원",
+    d: "21644",
+  },
+  {
+    name: "e현대자동차운전전문학원",
+    d: "21822",
+  },
+  {
+    name: "동아자동차운전전문학원",
+    d: "23985",
+  },
+  {
+    name: "인기자동차운전전문학원",
+    d: "24346",
+  },
+  {
+    name: "주신자동차운전전문학원",
+    d: "30755",
+  },
+  {
+    name: "인천자동차운전전문학원",
+    d: "31295",
+  },
+  {
+    name: "시엘자동차운전전문학원",
+    d: "31348",
+  },
+];
 const initialList = [
   {
     a: "A",

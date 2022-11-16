@@ -3,9 +3,15 @@ import styles from "./Item.module.css";
 import { FaBus } from "react-icons/fa";
 import { SlUserFemale } from "react-icons/sl";
 import { MdOutlineNightsStay } from "react-icons/md";
+import Stars from "../../Detail/People/Stars/Stars";
 
-function Item({ inf, onDetail }) {
-  const { title, star, price, distance } = inf;
+function Item({ disItem, onDetail }) {
+  const { name, d } = disItem;
+  const { title, star, price, distance } = {
+    title: name,
+    price: "79",
+    distance: (d / 1000).toFixed(1),
+  };
   return (
     <li className={styles.container}>
       <strong
@@ -17,7 +23,10 @@ function Item({ inf, onDetail }) {
         {title}
       </strong>
       <div className={styles.starNcheck}>
-        <span className={styles.star}>{star}</span>
+        <span className={styles.star}>
+          {" "}
+          <Stars num={"3"} />{" "}
+        </span>
         <span className={styles.icons}>
           <>
             <FaBus />

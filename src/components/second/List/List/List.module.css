@@ -1,5 +1,9 @@
 .List {
   width: 400px;
+  overflow: auto;
+}
+.List > ul {
+  overflow: auto;
 }
 
 .form {
