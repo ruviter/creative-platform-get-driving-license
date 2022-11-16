@@ -10,10 +10,12 @@ function MapContainer({ center }) {
   const [currentMarker, setCurrentMarker] = useState({})
   const [map, setMap] = useState({});
   useEffect(() => {
-    createMap(setMap, currentL);
+    getCurrentLocation(setCurrentL);
   }, []);
+  useEffect(()=>{
+    createMap(setMap, currentL);
+  },[currentL])
   useEffect(() => {
-    // getCurrentLocation(map, setCurrentL);
     // createCurrentMarker(map, currentL, setCurrentMarker);
     // schoolMarkers(map);
     // searchMap("내손로 14", map);
