@@ -7,9 +7,10 @@ import Stars from "../../Detail/People/Stars/Stars";
 
 function Item({ disItem, onDetail }) {
   const { name, d } = disItem;
-  const { title, star, price, distance } = {
+  const { title, star, price1, price2, distance } = {
     title: name,
-    price: "79",
+    price1: "79",
+    price2: "68",
     distance: (d / 1000).toFixed(1),
   };
   return (
@@ -40,7 +41,10 @@ function Item({ disItem, onDetail }) {
         </span>
         <input type="checkbox" className={styles.checkbox} />
       </div>
-      <div className={styles.price}>1종 보통 - {price}만</div>
+      <div className={styles.price}>
+        <span>1종 보통 - {price1}만</span>{" / "}
+        <span>2종 보통 - {price2}만</span>
+      </div>
       <div className={styles.location}>나와의 거리 : {distance}km</div>
     </li>
   );
