@@ -16,14 +16,13 @@
     border-radius: 0 0.3rem 0.3rem 0;
   }
   
-  .classify {
+  .filter {
     color: black;
     font-size: 0.8rem;
     margin-left: 10px;
+    cursor: pointer;
   }
-  .classify > strong {
-    color: var(--color-accent);
-  }
+
   .compare {
     display: flex;
     flex-direction: row-reverse;
