@@ -8,8 +8,8 @@ import { useState } from "react";
 
 function List({ onDetail, onCompare, disList }) {
   const [filter, setFilter] = useState(0);
-  // const sortedList = filting(filter, disList);
-  const sortedList = ['한빛자동차운전전문학원','인천자동차운전전문학원','주신자동차운전전문학원','동아자동차운전전문학원'];
+  const sortedList = filting(filter, disList);
+  const fsortedList = ['한빛자동차운전전문학원','인천자동차운전전문학원','주신자동차운전전문학원','동아자동차운전전문학원'];
   console.log(sortedList);
   return (
     <div className={styles.List}>
@@ -31,7 +31,7 @@ const filting = (filter, disList) => {
     .map(({ name }) => list[name])
     .map((i) => i.ListList);
   if (filter === 0) {
-    return;
+    return disList.map((i)=>(i.name)) ;
   }
   if (filter === 1) {
     return newList.sort((a, b) => a.price1 - b.price1).map((i) => i.name);
