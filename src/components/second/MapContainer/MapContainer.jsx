@@ -14,7 +14,7 @@ function MapContainer({ center }) {
   }, []);
   useEffect(() => {
     getCurrentLocation(map, setCurrentL);
-    setCurrentMarker(map, currentL);
+    createCurrentMarker(map, currentL, setCurrentMarker);
     schoolMarkers(map);
     searchMap("내손로 14", map);
   }, [map]);
@@ -62,7 +62,7 @@ const getCurrentLocation = (map, setCurrentL) => {
   }
 };
 
-const setCurrentMarker = (map, currentL) => {
+const createCurrentMarker = (map, currentL, setCurrentMarker) => {
   const locPosition = new kakao.maps.LatLng(currentL.lat, currentL.lon);
   const marker = new kakao.maps.Marker({
     position: locPosition,
@@ -70,6 +70,7 @@ const setCurrentMarker = (map, currentL) => {
     draggable: true,
     map:map,
   });
+  setCurrentMarker(marker)
 };
 
 const schoolMarkers = (map) => {
