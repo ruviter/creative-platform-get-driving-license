@@ -6,9 +6,10 @@ import { list } from "../incheonSchoolList/list";
 const { kakao } = window;
 
 function MapContainer({ center }) {
-  const [currentL, setCurrentL] = useState(defaultLocation);
-  const [currentMarker, setCurrentMarker] = useState({})
   const [map, setMap] = useState({});
+  const [currentL, setCurrentL] = useState(defaultLocation);
+  const [currentMarker, setCurrentMarker] = useState({});
+  const [distances, setDistances] = useState()
   useEffect(() => {
     getCurrentLocation(setCurrentL);
     createMap(setMap, currentL, setCurrentMarker);
@@ -16,7 +17,7 @@ function MapContainer({ center }) {
   useEffect(()=>{
   },[map,currentL])
   useEffect(() => {
-    // schoolMarkers(map);
+    schoolMarkers(map,currentL, setDistances);
     // searchMap("내손로 14", map);
   }, [map]);
   return (
@@ -66,12 +67,17 @@ const createCurrentMarker = (map, currentL, setCurrentMarker) => {
   setCurrentMarker(marker)
 };
 
-const schoolMarkers = (map) => {
+const schoolMarkers = (map, currentL, setDistances) => {
+  const dis = {}
   Object.keys(list).map((name) => {
     const ps = new kakao.maps.services.Places();
-    ps.keywordSearch(name, placesSearchCB);
+    ps.keywordSearch(name, placesSearchCB,{
+      x:currentL.lon,
+      y:currentL.lat,
+    });
     
     function placesSearchCB(data, status, pagination) {
+      console.log(data[0].distance)
       const iwContent = `<div>${name}</div>`;
       const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
       
