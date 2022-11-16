@@ -5,12 +5,14 @@ import { IoIosSearch } from "react-icons/io";
 import Search from "../Search/Search";
 import { list } from "../../incheonSchoolList/list";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function List({ onDetail, onCompare, disList }) {
   const [filter, setFilter] = useState(0);
-  const sortedList = filting(filter, disList);
-  const fsortedList = ['한빛자동차운전전문학원','인천자동차운전전문학원','주신자동차운전전문학원','동아자동차운전전문학원'];
-  console.log(sortedList);
+  const [sortedList, setSortedList] = useState(initSortedList);
+  useEffect(() => {
+    filting(filter, disList, setSortedList);
+  }, [filter]);
   return (
     <div className={styles.List}>
       <Search onCompare={onCompare} onFilter={setFilter} filterValue={filter} />
@@ -25,20 +27,29 @@ function List({ onDetail, onCompare, disList }) {
   );
 }
 
-const filting = (filter, disList) => {
+const filting = (filter, disList, setSortedList) => {
   const newList = disList
     .slice(0, 4)
     .map(({ name }) => list[name])
     .map((i) => i.ListList);
   if (filter === 0) {
-    return disList.map((i)=>(i.name)) ;
+    setSortedList(disList.map((i) => i.name));
   }
   if (filter === 1) {
-    return newList.sort((a, b) => a.price1 - b.price1).map((i) => i.name);
+    setSortedList(
+      newList.sort((a, b) => a.price1 - b.price1).map((i) => i.name)
+    );
   }
   if (filter === 2) {
-    return newList.sort((a, b) => b.star - a.star).map((i) => i.name);
+    setSortedList(newList.sort((a, b) => b.star - a.star).map((i) => i.name));
   }
 };
+
+const initSortedList = [
+  "한빛자동차운전전문학원",
+  "인천자동차운전전문학원",
+  "주신자동차운전전문학원",
+  "동아자동차운전전문학원",
+];
 
 export default List;
