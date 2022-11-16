@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styles from "./Person.module.css";
 import Rating from "../Rating/Rating";
+import Stars from "../Stars/Stars";
 
 function Person({ name, setTeachers, teachers }) {
   const imgSrc =
@@ -13,7 +14,7 @@ function Person({ name, setTeachers, teachers }) {
     <div className={styles.person}>
       <img className={styles.img} src={img} alt="profile" />
       <div>{name} 강사</div>
-      <div className={styles.star}>{star} </div>
+      <div className={styles.star}> <Stars num='3' /> </div>
       <button
         onClick={() => {
           setReview(true);
@@ -38,7 +39,7 @@ function Person({ name, setTeachers, teachers }) {
 
 
 function Review({ onClose, name, reviews, setTeachers, teachers }) {
-
+  const [stars, setStars] = useState(0)
   const onWReview = (e) => {
     e.preventDefault();
     console.log(e.target[0].value)
