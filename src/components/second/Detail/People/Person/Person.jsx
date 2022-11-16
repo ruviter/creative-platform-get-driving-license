@@ -84,10 +84,11 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
       </ul>
       <div className={styles.wreview}>
         <Rating setStar={setStars} />
-        <form action="submit" onSubmit={onWReview}>
+        <form className={styles.form} action="submit" onSubmit={onWReview}>
           <input type="text" placeholder="나도 후기 작성하기" />
           <button>submit</button>
         </form>
+        
       </div>
     </div>
   );

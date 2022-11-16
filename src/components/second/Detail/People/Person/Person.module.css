@@ -87,6 +87,23 @@
   margin: 10px 0;
 }
 
+.form {
+  display: flex;
+  margin: 15px 0;
+}
+
+.form > input {
+  flex: 1;
+  padding: 15px ;
+  border: 0;
+  background-color: var(--color-input);
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 0.3rem 0 0 0.3rem;
+}
+.form > button {
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+
 .content {
   font-size: 0.9rem;
 }

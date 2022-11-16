@@ -5,7 +5,7 @@ import { SlUserFemale } from "react-icons/sl";
 import { MdOutlineNightsStay } from "react-icons/md";
 
 function Item({ inf, onDetail }) {
-  const { a, title, star, price, distance } = inf;
+  const { title, star, price, distance } = inf;
   return (
     <li className={styles.container}>
       <strong
@@ -14,7 +14,7 @@ function Item({ inf, onDetail }) {
           onDetail(true);
         }}
       >
-        {a} {title}
+        {title}
       </strong>
       <div className={styles.starNcheck}>
         <span className={styles.star}>{star}</span>
