@@ -31,7 +31,7 @@ const createMap = (setMap, setCurrentL, setCurrentMarker, setDisList) => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
       const kakaoLatLng = new kakao.maps.LatLng(lat, lon);
-      setCurrentL({ lat, lon, kakaoLatLng });
+      setCurrentL(kakaoLatLng);
 
 
       // create map
@@ -50,6 +50,9 @@ const createMap = (setMap, setCurrentL, setCurrentMarker, setDisList) => {
         draggable: true,
         map: map,
       });
+      kakao.maps.event.addListener(currentMarker,'dragend',()=>{
+        setCurrentL(currentMarker.getPosition())
+      })
       setCurrentMarker(currentMarker);
 
 
@@ -96,6 +99,9 @@ const createMap = (setMap, setCurrentL, setCurrentMarker, setDisList) => {
           }
         }
       });
+
+
+      //
 
       setMap(map);
     });
@@ -159,11 +165,8 @@ const imageSrc =
 const imageSize = new kakao.maps.Size(24, 35);
 const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
-const defaultLocation = {
-  lat: 37.3817847,
-  lon: 126.6677834,
-  kakaoLatLng: new kakao.maps.LatLng(37.3817847, 126.6677834),
-};
+const defaultLocation = new kakao.maps.LatLng(37.3817847, 126.6677834);
+
 
 const defaultDisList = [
   {
