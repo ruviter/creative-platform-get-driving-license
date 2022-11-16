@@ -6,14 +6,16 @@ import { list } from "../incheonSchoolList/list";
 const { kakao } = window;
 
 function MapContainer({ center }) {
-  const [currentP, setCurrentP] = useState({});
+  const [currentL, setCurrentL] = useState({});
+  const [currentMarker, setCurrentMarker] = useState({})
   const [map, setMap] = useState({});
   useEffect(() => {
     createMap(setMap);
   }, []);
   useEffect(() => {
+    getCurrentLocation(map, setCurrentL);
+    setCurrentMarker(map, currentL);
     schoolMarkers(map);
-    currentLocation(map);
     searchMap("내손로 14", map);
   }, [map]);
   return (
@@ -42,33 +44,32 @@ const createMap = (setMap) => {
   setMap(map);
 };
 
-const currentLocation = (map) => {
+const getCurrentLocation = (map, setCurrentL) => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
-
+      setCurrentL({ lat, lon });
       const locPosition = new kakao.maps.LatLng(lat, lon);
 
       map.setCenter(locPosition);
-
-      const marker = new kakao.maps.Marker({
-        position: locPosition,
-      });
-      marker.setMap(map);
-      marker.setDraggable(true);
     });
   } else {
-    const locPosition = new kakao.maps.LatLng(37.3817847, 126.6677834);
-    const marker = new kakao.maps.Marker({
-      position: locPosition,
-    });
-
-    map.setCenter(locPosition);
-
-    marker.setMap(map);
-    marker.setDraggable(true);
+    const lat = 37.3817847;
+    const lon = 126.6677834;
+    const locPosition = new kakao.maps.LatLng(lat, lon);
+    setCurrentL({ lat, lon });
   }
+};
+
+const setCurrentMarker = (map, currentL) => {
+  const locPosition = new kakao.maps.LatLng(currentL.lat, currentL.lon);
+  const marker = new kakao.maps.Marker({
+    position: locPosition,
+    title: '현 위치',
+    draggable: true,
+    map:map,
+  });
 };
 
 const schoolMarkers = (map) => {
