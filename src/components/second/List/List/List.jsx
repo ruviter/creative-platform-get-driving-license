@@ -7,19 +7,17 @@ import { list } from "../../incheonSchoolList/list";
 import { useState } from "react";
 
 function List({ onDetail, onCompare, disList }) {
-  const [filter, setFilter] = useState(0)
+  const [filter, setFilter] = useState(0);
   return (
     <div className={styles.List}>
-      <Search onCompare={onCompare} onFilter={setFilter} filterValue={filter}/>
+      <Search onCompare={onCompare} onFilter={setFilter} filterValue={filter} />
       <ul>
-        {disList.map((item) => (
-          <Item disItem={item} onDetail={onDetail} />
-        ))}
+        {disList.map((item, index) =>
+          index < 4 ? <Item disItem={item} onDetail={onDetail} /> : null
+        )}
       </ul>
     </div>
   );
 }
-
-
 
 export default List;
