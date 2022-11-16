@@ -1,17 +1,19 @@
 import React from "react";
 import { useState } from "react";
 import styles from "./Person.module.css";
+import Rating from "../Rating/Rating";
 
 function Person({ name, setTeachers, teachers }) {
   const imgSrc =
     "https://file.mk.co.kr/meet/neds/2021/07/image_readmed_2021_659579_16257086594710103.jpg";
   const { img, star, reviews } = teachers[name];
+  const [clicked, setClicked] = useState([false, false, false, false, false]);
   const [review, setReview] = useState(false);
   return (
     <div className={styles.person}>
       <img className={styles.img} src={img} alt="profile" />
       <div>{name} 강사</div>
-      <div className={styles.star}>{star}</div>
+      <div className={styles.star}>{star} </div>
       <button
         onClick={() => {
           setReview(true);
@@ -32,13 +34,17 @@ function Person({ name, setTeachers, teachers }) {
   );
 }
 
+
+
+
 function Review({ onClose, name, reviews, setTeachers, teachers }) {
+
   const onWReview = (e) => {
     e.preventDefault();
     console.log(e.target[0].value)
     const content = e.target[0].value;
     const star = "★ ★ ★ ★ ★";
-    const id = "아이디";
+    const id = "asdf";
     const cert = "영수증 인증한 리뷰";
     const today = new Date();
     const year = today.getFullYear();
@@ -50,7 +56,7 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
       [Date.now()]: { star, cert, id, date, content },
     };
     console.log(newReviews)
-    setTeachers({ ...teachers, [teachers[name]]: { reviews: newReviews } });
+    setTeachers({ ...teachers, [name]: {...teachers[name] , reviews: newReviews } });
   };
   return (
     <div className={styles.container}>

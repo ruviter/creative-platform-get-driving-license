@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "./App.module.css";
 import Nav from "./components/Nav/Nav";
-import FirstPage from "./components/first/FirstPage/FirstPage";
 import SecondPage from "./components/second/SecondPage/SecondPage";
 import Qna from "./components/Qna/Qna";
 
