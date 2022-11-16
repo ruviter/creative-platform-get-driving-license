@@ -5,8 +5,14 @@ import { SlUserFemale } from "react-icons/sl";
 import { MdOutlineNightsStay } from "react-icons/md";
 import Stars from "../../Detail/People/Stars/Stars";
 
-function Item({ disItem, onDetail }) {
-  const { name, d } = disItem;
+function Item({ name, disList, onDetail }) {
+  let d = 21000
+  disList.map((i)=>{
+    if (String(i.name) === name) {
+      d = i.d
+    }
+    return 0
+  })
   const { title, star, price1, price2, distance } = {
     title: name,
     price1: "79",
