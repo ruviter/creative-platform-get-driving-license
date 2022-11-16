@@ -10,7 +10,7 @@ function SecondPage({}) {
   const [detail, setDetail] = useState(false);
   const [compare, setCompare] = useState(false);
   const [list, setList] = useState(initialList);
-  const [disList, setDisList] = useState(defaultDisList)
+  const [disList, setDisList] = useState(defaultDisList);
   return (
     <section className={styles.section}>
       {detail ? (
@@ -61,32 +61,28 @@ const defaultDisList = [
 ];
 const initialList = [
   {
-    a: "A",
-    title: "서울 자동차운전전문학원",
-    star: "★★★☆☆",
-    price: "79",
-    distance: "1.2",
+    name: "서울 자동차운전전문학원",
+    star: "3",
+    price1: "79",
+    price2: "79",
   },
   {
-    a: "B",
-    title: "명학 자동차운전전문학원",
-    star: "★★★★☆",
-    price: "80",
-    distance: "2",
+    name: "명학 자동차운전전문학원",
+    star: "3",
+    price1: "80",
+    price2: "80",
   },
   {
-    a: "C",
-    title: "신현대 자동차운전전문학원",
-    star: "★★★☆☆",
-    price: "81.2",
-    distance: "1.5",
+    name: "신현대 자동차운전전문학원",
+    star: "3",
+    price1: "81.2",
+    price2: "81.2",
   },
   {
-    a: "D",
-    title: "단원 자동차운전전문학원",
-    star: "★★★☆☆",
-    price: "82.2",
-    distance: "1.3",
+    name: "단원 자동차운전전문학원",
+    star: "3",
+    price1: "82.2",
+    price2: "82.2",
   },
 ];
 export default SecondPage;
