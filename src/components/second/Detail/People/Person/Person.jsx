@@ -39,7 +39,7 @@ function Person({ name, setTeachers, teachers }) {
 
 
 function Review({ onClose, name, reviews, setTeachers, teachers }) {
-  const [stars, setStars] = useState(0)
+  const [stars, setStars] = useState(0);
   const onWReview = (e) => {
     e.preventDefault();
     console.log(e.target[0].value)
@@ -51,7 +51,7 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
     const year = today.getFullYear();
     const month = today.getMonth() + 1;
     const day = today.getDate();
-    const date = year + "/" + month + "/" + day;
+    const date = year + "." + month + "." + day;
     const newReviews = {
       ...reviews,
       [Date.now()]: { star, cert, id, date, content },

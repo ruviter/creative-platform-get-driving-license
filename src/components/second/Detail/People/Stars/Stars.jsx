@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BsFillStarFill } from "react-icons/bs";
 
-const ARRAY = [0, 1, 2, 3, 4];
+const ARRAY = [1, 2, 3, 4,5];
 
 function Stars({ num }) {
   return (

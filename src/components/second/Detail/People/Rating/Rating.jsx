@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import styles from "./Rating.module.css";
 
-const ARRAY = [0, 1, 2, 3, 4];
+const ARRAY = [ 1, 2, 3, 4,5];
 
 function Rating({ setStar }) {
   const [hovered, setHovered] = useState(-1);
