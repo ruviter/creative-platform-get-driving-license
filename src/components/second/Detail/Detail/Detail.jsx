@@ -3,8 +3,11 @@ import styles from "./Detail.module.css";
 import People from "../People/People";
 import Price from "../Price/Price";
 import Route from "../Route/Route";
+import { FaBus } from "react-icons/fa";
+import { SlUserFemale } from "react-icons/sl";
+import { MdOutlineNightsStay } from "react-icons/md";
 
-function Detail({onClose}) {
+function Detail({ onClose }) {
   return (
     <>
       <button className={styles.close} onClick={() => onClose(false)}>
@@ -35,6 +38,17 @@ function Details() {
       <p>영업시간 : 오전 9 : 00 ~ 오후 20 : 00</p>
       <p>전화번호 : 031-325-3405</p>
       <p>홈페이지 : https://encycolorpedia.kr/808080</p>
+      <p>
+        <>
+          <FaBus />
+        </>
+        <>
+          <SlUserFemale />
+        </>
+        <>
+          <MdOutlineNightsStay />
+        </>
+      </p>
     </div>
   );
 }

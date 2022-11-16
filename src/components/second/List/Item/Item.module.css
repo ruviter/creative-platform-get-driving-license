@@ -20,11 +20,22 @@
   color: var(--color-font);
 }
 
-.star {
-  color:var(--color-star);
-  
+.starNcheck {
+  color: var(--color-font);
+  display: flex;
+  justify-content: space-between;
 }
 
+.star {
+  color:var(--color-star);
+}
+
+.icons {
+  width: 80px;
+  margin-left: 70px;
+  display: flex;
+  justify-content: space-around;
+}
 .checkbox {
   width: 18px; /*Desired width*/
   height: 18px; /*Desired height*/
