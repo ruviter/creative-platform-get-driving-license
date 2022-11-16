@@ -16,14 +16,15 @@ function People(props) {
     </>
   );
 }
+
 const initTeachers = {
   우민혁 : {
     img: "https://mblogthumb-phinf.pstatic.net/20150122_225/zikil337_1421903667630tY9OM_JPEG/1406712927189_1406709118496-1.jpg?type=w2",
     name: "우민혁",
-    star: "★ ★ ★ ★ ★",
+    star: "5",
     reviews: {
       1: {
-        star: "★ ★ ★ ★ ★",
+        star: "5",
         cert: "영수증 인증한 리뷰",
         id: "수다쟁이",
         date: "2022.11.16",
@@ -31,7 +32,7 @@ const initTeachers = {
           "너무 친절하게 잘 대해주셔서 한번에 합격했어요..!! 진짜 강추!! 너무 감사드리고 만약 다음에 연수를 한다면 거기서도 하고 싶다는 생각이 들정도로 정말 친절하고 상냥하게 설명해주셨어요!! 정말 감사합니다!!",
       },
       2: {
-        star: "★ ★ ★ ★ ★",
+        star: "5",
         cert: "영수증 인증한 리뷰",
         id: "수다쟁이",
         date: "2022.11.16",
@@ -43,10 +44,10 @@ const initTeachers = {
   심준석 : {
     img: "https://mblogthumb-phinf.pstatic.net/20150122_225/zikil337_1421903667630tY9OM_JPEG/1406712927189_1406709118496-1.jpg?type=w2",
     name: "심준석",
-    star: "★ ★ ★ ★ ★",
+    star: "5",
     reviews: {
       1: {
-        star: "★ ★ ★ ★ ★",
+        star: "5",
         cert: "영수증 인증한 리뷰",
         id: "수다쟁이",
         date: "2022.11.16",
@@ -54,7 +55,7 @@ const initTeachers = {
           "너무 친절하게 잘 대해주셔서 한번에 합격했어요..!! 진짜 강추!! 너무 감사드리고 만약 다음에 연수를 한다면 거기서도 하고 싶다는 생각이 들정도로 정말 친절하고 상냥하게 설명해주셨어요!! 정말 감사합니다!!",
       },
       2: {
-        star: "★ ★ ★ ★ ★",
+        star: "5",
         cert: "영수증 인증한 리뷰",
         id: "수다쟁이",
         date: "2022.11.16",
@@ -66,10 +67,10 @@ const initTeachers = {
   김선혁 : {
     img: "https://mblogthumb-phinf.pstatic.net/20150122_225/zikil337_1421903667630tY9OM_JPEG/1406712927189_1406709118496-1.jpg?type=w2",
     name: "김선혁",
-    star: "★ ★ ★ ★ ★",
+    star: "5",
     reviews: {
       1: {
-        star: "★ ★ ★ ★ ★",
+        star: "5",
         cert: "영수증 인증한 리뷰",
         id: "수다쟁이",
         date: "2022.11.16",
@@ -77,7 +78,7 @@ const initTeachers = {
           "너무 친절하게 잘 대해주셔서 한번에 합격했어요..!! 진짜 강추!! 너무 감사드리고 만약 다음에 연수를 한다면 거기서도 하고 싶다는 생각이 들정도로 정말 친절하고 상냥하게 설명해주셨어요!! 정말 감사합니다!!",
       },
       2: {
-        star: "★ ★ ★ ★ ★",
+        star: "5",
         cert: "영수증 인증한 리뷰",
         id: "수다쟁이",
         date: "2022.11.16",

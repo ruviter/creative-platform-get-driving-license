@@ -5,16 +5,16 @@ import Rating from "../Rating/Rating";
 import Stars from "../Stars/Stars";
 
 function Person({ name, setTeachers, teachers }) {
-  const imgSrc =
-    "https://file.mk.co.kr/meet/neds/2021/07/image_readmed_2021_659579_16257086594710103.jpg";
   const { img, star, reviews } = teachers[name];
-  const [clicked, setClicked] = useState([false, false, false, false, false]);
   const [review, setReview] = useState(false);
   return (
     <div className={styles.person}>
       <img className={styles.img} src={img} alt="profile" />
       <div>{name} 강사</div>
-      <div className={styles.star}> <Stars num='3' /> </div>
+      <div className={styles.star}>
+        {" "}
+        <Stars num={star} />{" "}
+      </div>
       <button
         onClick={() => {
           setReview(true);
@@ -35,14 +35,11 @@ function Person({ name, setTeachers, teachers }) {
   );
 }
 
-
-
-
 function Review({ onClose, name, reviews, setTeachers, teachers }) {
   const [stars, setStars] = useState(0);
   const onWReview = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value)
+    console.log(e.target[0].value);
     const content = e.target[0].value;
     const star = "★ ★ ★ ★ ★";
     const id = "asdf";
@@ -56,8 +53,11 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
       ...reviews,
       [Date.now()]: { star, cert, id, date, content },
     };
-    console.log(newReviews)
-    setTeachers({ ...teachers, [name]: {...teachers[name] , reviews: newReviews } });
+    console.log(newReviews);
+    setTeachers({
+      ...teachers,
+      [name]: { ...teachers[name], reviews: newReviews },
+    });
   };
   return (
     <div className={styles.container}>
@@ -69,7 +69,7 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
         {Object.keys(teachers[name].reviews).map((r) => (
           <li key={r} className={styles.li}>
             <div className={styles.starNcert}>
-              <span className={styles.star}>{reviews[r].star} </span>{" "}
+              <span className={styles.star}> <Stars num={reviews[r].star} />  </span>{" "}
               <span className={styles.cert}>{reviews[r].cert}</span>
             </div>
             <div className={styles.id}>
@@ -80,6 +80,7 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
         ))}
       </ul>
       <div className={styles.wreview}>
+        <Rating setStar={setStars} />
         <form action="submit" onSubmit={onWReview}>
           <input type="text" placeholder="나도 후기 작성하기" />
           <button>submit</button>
