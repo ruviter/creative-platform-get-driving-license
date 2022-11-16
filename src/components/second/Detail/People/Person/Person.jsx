@@ -36,12 +36,12 @@ function Person({ name, setTeachers, teachers }) {
 }
 
 function Review({ onClose, name, reviews, setTeachers, teachers }) {
-  const [stars, setStars] = useState(0);
+  const [stars, setStars] = useState("3");
   const onWReview = (e) => {
     e.preventDefault();
     console.log(e.target[0].value);
     const content = e.target[0].value;
-    const star = "★ ★ ★ ★ ★";
+    const star = stars;
     const id = "asdf";
     const cert = "영수증 인증한 리뷰";
     const today = new Date();
@@ -64,12 +64,15 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
       <button className={styles.close} onClick={() => onClose(false)}>
         X
       </button>
+      <div className={styles.name}>{name} 강사님 - 도로주행 전문</div>
       <ul className={styles.ul}>
-        <div className={styles.name}>{name} 강사님 - 도로주행 전문</div>
         {Object.keys(teachers[name].reviews).map((r) => (
           <li key={r} className={styles.li}>
             <div className={styles.starNcert}>
-              <span className={styles.star}> <Stars num={reviews[r].star} />  </span>{" "}
+              <span className={styles.star}>
+                {" "}
+                <Stars num={reviews[r].star} />{" "}
+              </span>{" "}
               <span className={styles.cert}>{reviews[r].cert}</span>
             </div>
             <div className={styles.id}>

@@ -57,6 +57,7 @@
 .name {
   font-family: var(--font-accent);
   font-size: 1.2rem;
+  position: sticky;
 }
 .ul {
   overflow: auto;
