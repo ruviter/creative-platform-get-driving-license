@@ -2,12 +2,7 @@ import React from "react";
 import Price from "../Detail/Price/Price";
 import styles from "./Compare.module.css";
 
-const comList = [
-  "한빛자동차운전전문학원",
-  "인천자동차운전전문학원",
-  "주신자동차운전전문학원",
-];
-function Compare({ onClose }) {
+function Compare({ onClose, comList }) {
   return (
     <div className={styles.container}>
       <button className={styles.close} onClick={() => onClose(false)}>

@@ -11,6 +11,7 @@ import Compare from "../../Compare/Compare";
 function List({ onDetail, disList }) {
   const [filter, setFilter] = useState(0);
   const [compare, setCompare] = useState(false);
+  const [comList, setcomList] = useState(initComList)
   const [sortedList, setSortedList] = useState(initSortedList);
   useEffect(() => {
     filting(filter, disList, setSortedList);
@@ -25,7 +26,7 @@ function List({ onDetail, disList }) {
           ) : null
         )}
       </ul>
-      {compare && <Compare onClose={setCompare} />}
+      {compare && <Compare onClose={setCompare} comList={comList} />}
     </div>
   );
 }
@@ -53,6 +54,12 @@ const initSortedList = [
   "인천자동차운전전문학원",
   "주신자동차운전전문학원",
   "동아자동차운전전문학원",
+];
+
+const initComList = [
+  "한빛자동차운전전문학원",
+  "인천자동차운전전문학원",
+  "주신자동차운전전문학원",
 ];
 
 export default List;
