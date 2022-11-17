@@ -48,8 +48,8 @@ function Item({ name, disList, onDetail, comList, setComList }) {
       </strong>
       <div className={styles.starNcheck}>
         <span className={styles.star}>
-          {" "}
-          <Stars num={star} />{" "}
+          {star }{" "}
+          <Stars num={star} />
         </span>
         <span className={styles.icons}>
           <>

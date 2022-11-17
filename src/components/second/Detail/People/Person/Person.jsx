@@ -3,11 +3,19 @@ import { useState } from "react";
 import styles from "./Person.module.css";
 import Rating from "../Rating/Rating";
 import Stars from "../Stars/Stars";
+import { useEffect } from "react";
 
 function Person({ name, setTeachers, teachers }) {
   const { img, star, reviews } = teachers[name];
   const [starAvg, setStarAvg] = useState(4.4)
   const [review, setReview] = useState(false);
+  useEffect(()=>{
+    const starList = Object.keys(teachers[name].reviews).map((r) => Number(reviews[r].star))
+    const avg =  starList.reduce(function add(sum, currValue) {
+      return sum + currValue;
+    }, 0) / starList.length
+    setStarAvg(avg)
+  },[])
   return (
     <div className={styles.person}>
       <img className={styles.img} src={img} alt="profile" />

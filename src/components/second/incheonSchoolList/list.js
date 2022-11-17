@@ -10,7 +10,7 @@ export const list = {
       y: "37.367132994729005",
       ListList: {
         name: "한빛자동차운전전문학원",
-        star: "3",
+        star: "3.4",
         price1: "79",
         price2: "69",
       },
@@ -26,7 +26,7 @@ export const list = {
       y: "37.4451109035324",
       ListList: {
         name: "인천자동차운전전문학원",
-        star: "4",
+        star: "4.3",
         price1: "67",
         price2: "57",
       },
@@ -42,7 +42,7 @@ export const list = {
       y: "37.439647820007096",
       ListList: {
         name: "주신자동차운전전문학원",
-        star: "3",
+        star: "3.2",
         price1: "63",
         price2: "53",
       },
@@ -58,7 +58,7 @@ export const list = {
       y: "37.398752161094684",
       ListList: {
         name: "동아자동차운전전문학원",
-        star: "4",
+        star: "4.6",
         price1: "74",
         price2: "64",
       },
@@ -74,7 +74,7 @@ export const list = {
       y: "37.4462431987732",
       ListList: {
         name: "시엘자동차운전전문학원",
-        star: "5",
+        star: "4.8",
         price1: "68",
         price2: "58",
       },
@@ -90,7 +90,7 @@ export const list = {
       y: "37.39088935382346",
       ListList: {
         name: "인기자동차운전전문학원",
-        star: "1",
+        star: "1.5",
         price1: "76",
         price2: "66",
       },
@@ -106,7 +106,7 @@ export const list = {
       y: "37.3702003391523",
       ListList: {
         name: "e현대자동차운전전문학원",
-        star: "2",
+        star: "2.4",
         price1: "75",
         price2: "65",
       },

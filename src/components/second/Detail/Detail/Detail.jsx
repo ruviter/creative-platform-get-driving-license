@@ -6,6 +6,7 @@ import Route from "../Route/Route";
 import { FaBus } from "react-icons/fa";
 import { SlUserFemale } from "react-icons/sl";
 import { MdOutlineNightsStay } from "react-icons/md";
+import { list } from "../../incheonSchoolList/list";
 
 function Detail({ onClose, name }) {
   return (
@@ -21,7 +22,7 @@ function Detail({ onClose, name }) {
           <People />
         </div>
         <div className={styles.details}>
-          <Details />
+          <Details name={name} />
         </div>
       </section>
       <div className={styles.route}>
@@ -30,14 +31,14 @@ function Detail({ onClose, name }) {
     </>
   );
 }
-function Details() {
+function Details({name}) {
   return (
     <div className={styles.detailsContainer} style={{ flex: "1" }}>
       <div className={styles.title}>세부정보</div>
-      <p>상세주소 : 경기 의왕시 경수대로 321</p>
+      <p>상세주소 : {list[name].address_name}</p>
       <p>영업시간 : 오전 9 : 00 ~ 오후 20 : 00</p>
-      <p>전화번호 : 031-325-3405</p>
-      <p>홈페이지 : https://encycolorpedia.kr/808080</p>
+      <p>전화번호 : {list[name].phone}</p>
+      <p>홈페이지 : {list[name].place_url}</p>
       <p className={styles.icons}>
         <span>
           <FaBus />
