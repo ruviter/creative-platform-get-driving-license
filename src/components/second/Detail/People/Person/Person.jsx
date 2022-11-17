@@ -41,7 +41,6 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
     e.preventDefault();
     console.log(e.target[0].value);
     const content = e.target[0].value;
-    const star = stars;
     const id = "asdf";
     const cert = "영수증 인증한 리뷰";
     const today = new Date();
@@ -51,7 +50,7 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
     const date = year + "." + month + "." + day;
     const newReviews = {
       ...reviews,
-      [Date.now()]: { star, cert, id, date, content },
+      [Date.now()]: { star:stars, cert, id, date, content },
     };
     console.log(newReviews);
     setTeachers({
@@ -88,7 +87,6 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
           <input type="text" placeholder="나도 후기 작성하기" />
           <button>submit</button>
         </form>
-        
       </div>
     </div>
   );
