@@ -7,14 +7,14 @@ import styles from "./SecondPage.module.css";
 import MapContainer from "../MapContainer/MapContainer";
 
 function SecondPage({}) {
-  const [detail, setDetail] = useState(false);
+  const [detail, setDetail] = useState([false]);
   const [list, setList] = useState(initialList);
   const [disList, setDisList] = useState(defaultDisList);
   return (
     <section className={styles.section}>
-      {detail ? (
+      {detail[0] ? (
         <div className={styles.detail}>
-          <Detail onClose={setDetail} />
+          <Detail onClose={setDetail} name={detail[1]} />
         </div>
       ) : (
         <>

@@ -7,14 +7,14 @@ import { FaBus } from "react-icons/fa";
 import { SlUserFemale } from "react-icons/sl";
 import { MdOutlineNightsStay } from "react-icons/md";
 
-function Detail({ onClose }) {
+function Detail({ onClose, name }) {
   return (
     <>
-      <button className={styles.close} onClick={() => onClose(false)}>
+      <button className={styles.close} onClick={() => onClose([false,name])}>
         X
       </button>
       <div className={styles.price}>
-        <Price title={"서울 자동차운전면허학원"} />
+        <Price title={name} />
       </div>
       <section className={styles.section}>
         <div className={styles.people}>

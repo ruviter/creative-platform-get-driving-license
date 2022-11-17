@@ -34,7 +34,7 @@ function Item({ name, disList, onDetail, comList, setComList }) {
       <strong
         className={styles.title}
         onClick={() => {
-          onDetail(true);
+          onDetail([true,name]);
         }}
       >
         {title}
