@@ -9,7 +9,7 @@ function Compare({ onClose, comList }) {
         X
       </button>
       {comList.map((i) => (
-        <div>
+        <div key={i} >
           <CompareDetail title={i} />
         </div>
       ))}

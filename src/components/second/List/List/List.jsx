@@ -11,7 +11,7 @@ import Compare from "../../Compare/Compare";
 function List({ onDetail, disList }) {
   const [filter, setFilter] = useState(0);
   const [compare, setCompare] = useState(false);
-  const [comList, setcomList] = useState(initComList)
+  const [comList, setComList] = useState([])
   const [sortedList, setSortedList] = useState(initSortedList);
   useEffect(() => {
     filting(filter, disList, setSortedList);
@@ -22,7 +22,7 @@ function List({ onDetail, disList }) {
       <ul>
         {sortedList.map((name, index) =>
           index < 4 ? (
-            <Item  name={name} disList={disList} onDetail={onDetail} />
+            <Item  name={name} disList={disList} comList={comList} setComList={setComList} onDetail={onDetail} />
           ) : null
         )}
       </ul>

@@ -4,8 +4,9 @@ import { FaBus } from "react-icons/fa";
 import { SlUserFemale } from "react-icons/sl";
 import { MdOutlineNightsStay } from "react-icons/md";
 import Stars from "../../Detail/People/Stars/Stars";
+import { logDOM } from "@testing-library/react";
 
-function Item({ name, disList, onDetail }) {
+function Item({ name, disList, onDetail, comList, setComList }) {
   let d = 21000
   disList.map((i)=>{
     if (String(i.name) === name) {
@@ -19,6 +20,15 @@ function Item({ name, disList, onDetail }) {
     price2: "68",
     distance: (d / 1000).toFixed(1),
   };
+  const onCheck = (e)=>{
+    if(e.target.checked) {
+      const newList = [...comList];
+      newList.pop(name)
+      setComList(newList)
+      console.log(comList)
+    }
+  }
+
   return (
     <li className={styles.container}>
       <strong
@@ -45,7 +55,7 @@ function Item({ name, disList, onDetail }) {
             <MdOutlineNightsStay />
           </>
         </span>
-        <input type="checkbox" className={styles.checkbox} />
+        <input type="checkbox" className={styles.checkbox} onChange={onCheck} />
       </div>
       <div className={styles.price}>
         <span>1종 보통 - {price1}만</span>{" / "}
