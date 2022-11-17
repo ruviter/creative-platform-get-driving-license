@@ -60,17 +60,26 @@ const createMap = (setMap, setCurrentL, setCurrentMarker, setDisList) => {
 
 
       // create current marker 
+      const dragiwContent = `<div style="padding:2px; font-size:0.8rem;">드래그 해보세요!</div>`;
+      const dragInfowindow = new kakao.maps.InfoWindow({ content: dragiwContent });
+    
       const currentMarker = new kakao.maps.Marker({
         position: kakaoLatLng,
         title: "현 위치",
         draggable: true,
         map: map,
+        image:markerImage
       });
       kakao.maps.event.addListener(currentMarker,'dragend',()=>{
         setCurrentL(currentMarker.getPosition())
+        dragInfowindow.open(map,currentMarker)
       })
+      kakao.maps.event.addListener(currentMarker,'dragstart',()=>{
+        dragInfowindow.close(map,currentMarker)
+      })
+      dragInfowindow.open(map,currentMarker)
       setCurrentMarker(currentMarker);
-
+      
 
       // create distance basic list 
       const dis = [];
@@ -100,7 +109,7 @@ const createMap = (setMap, setCurrentL, setCurrentMarker, setDisList) => {
         });
     
         function placesSearchCB(data, status, pagination) {
-          const iwContent = `<div>${name}</div>`;
+          const iwContent = `<div style="padding:5px; font-size:0.8rem;">${name.slice(0,-6) + '학원'}</div>`;
           const infowindow = new kakao.maps.InfoWindow({ content: iwContent });
     
           if (status === kakao.maps.services.Status.OK) {
@@ -108,18 +117,27 @@ const createMap = (setMap, setCurrentL, setCurrentMarker, setDisList) => {
             const marker = new kakao.maps.Marker({
               position: markerPosition,
               title: name,
-              image: markerImage,
             });
             marker.setMap(map);
-            infowindow.open(map, marker);
+            kakao.maps.event.addListener(marker, 'mouseover', function() {
+              // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+                infowindow.open(map, marker);
+            });
+            
+            // 마커에 마우스아웃 이벤트를 등록합니다
+            kakao.maps.event.addListener(marker, 'mouseout', function() {
+                // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+                infowindow.close();
+            });
           }
         }
       });
 
 
       //
-
+      map.setCenter(kakaoLatLng)
       setMap(map);
+      
     });
   }
 };
@@ -177,8 +195,8 @@ const searchMap = (keyword, map) => {
 };
 
 const imageSrc =
-  "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-const imageSize = new kakao.maps.Size(24, 35);
+  "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png";
+const imageSize = new kakao.maps.Size(50, 45);
 const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
 const defaultLocation = new kakao.maps.LatLng(37.3817847, 126.6677834);
