@@ -2,21 +2,22 @@ import React from "react";
 import Price from "../Detail/Price/Price";
 import styles from "./Compare.module.css";
 
+const comList = [
+  "한빛자동차운전전문학원",
+  "인천자동차운전전문학원",
+  "주신자동차운전전문학원",
+];
 function Compare({ onClose }) {
   return (
     <div className={styles.container}>
       <button className={styles.close} onClick={() => onClose(false)}>
         X
       </button>
-      <div>
-        <CompareDetail title={"서울 자동차운전면허 학원"} />
-      </div>
-      <div>
-        <CompareDetail title={"명학 자동차운전면허 학원"} />
-      </div>
-      <div>
-        <CompareDetail title={"하나 자동차운전면허 학원"} />
-      </div>
+      {comList.map((i) => (
+        <div>
+          <CompareDetail title={i} />
+        </div>
+      ))}
     </div>
   );
 }
