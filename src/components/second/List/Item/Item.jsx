@@ -25,6 +25,11 @@ function Item({ name, disList, onDetail, comList, setComList }) {
   const onCheck = (e)=>{
     if(e.target.checked) {
       const newList = [...comList];
+      newList.push(name)
+      setComList(newList)
+      console.log(comList)
+    } else {
+      const newList = [...comList];
       newList.pop(name)
       setComList(newList)
       console.log(comList)
