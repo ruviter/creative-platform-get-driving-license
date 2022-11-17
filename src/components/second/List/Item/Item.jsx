@@ -3,8 +3,9 @@ import styles from "./Item.module.css";
 import { FaBus } from "react-icons/fa";
 import { SlUserFemale } from "react-icons/sl";
 import { MdOutlineNightsStay } from "react-icons/md";
+
 import Stars from "../../Detail/People/Stars/Stars";
-import { logDOM } from "@testing-library/react";
+import { list } from "../../incheonSchoolList/list";
 
 function Item({ name, disList, onDetail, comList, setComList }) {
   let d = 21000
@@ -16,8 +17,9 @@ function Item({ name, disList, onDetail, comList, setComList }) {
   })
   const { title, star, price1, price2, distance } = {
     title: name,
-    price1: "79",
-    price2: "68",
+    star : list[name].ListList.star ,
+    price1: list[name].ListList.price1 ,
+    price2: list[name].ListList.price2,
     distance: (d / 1000).toFixed(1),
   };
   const onCheck = (e)=>{
@@ -42,7 +44,7 @@ function Item({ name, disList, onDetail, comList, setComList }) {
       <div className={styles.starNcheck}>
         <span className={styles.star}>
           {" "}
-          <Stars num={"3"} />{" "}
+          <Stars num={star} />{" "}
         </span>
         <span className={styles.icons}>
           <>
