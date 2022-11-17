@@ -6,14 +6,15 @@ import Stars from "../Stars/Stars";
 
 function Person({ name, setTeachers, teachers }) {
   const { img, star, reviews } = teachers[name];
+  const [starAvg, setStarAvg] = useState(4.4)
   const [review, setReview] = useState(false);
   return (
     <div className={styles.person}>
       <img className={styles.img} src={img} alt="profile" />
       <div>{name} 강사</div>
       <div className={styles.star}>
-        {" "}
-        <Stars num={star} />{" "}
+        <div>{starAvg.toFixed(1)}</div>
+        <Stars num={starAvg} />{" "}
       </div>
       <button
         onClick={() => {
@@ -29,14 +30,17 @@ function Person({ name, setTeachers, teachers }) {
           reviews={reviews}
           setTeachers={setTeachers}
           teachers={teachers}
+          starAvg={starAvg}
+          setStarAvg={setStarAvg}
         />
       )}
     </div>
   );
 }
 
-function Review({ onClose, name, reviews, setTeachers, teachers }) {
+function Review({ onClose, name, reviews, setTeachers, teachers, starAvg, setStarAvg }) {
   const [stars, setStars] = useState("3");
+  
   const onWReview = (e) => {
     e.preventDefault();
     console.log(e.target[0].value);
@@ -50,20 +54,27 @@ function Review({ onClose, name, reviews, setTeachers, teachers }) {
     const date = year + "." + month + "." + day;
     const newReviews = {
       ...reviews,
-      [Date.now()]: { star:stars, cert, id, date, content },
+      [Date.now()]: { star: stars, cert, id, date, content },
     };
-    console.log(newReviews);
-    setTeachers({
+    const starList = Object.keys(teachers[name].reviews).map((r) => Number(reviews[r].star))
+    const avg =  starList.reduce(function add(sum, currValue) {
+      return sum + currValue;
+    }, 0) / starList.length
+    setStarAvg(avg)
+
+    setTeachers(teachers=> ({
       ...teachers,
       [name]: { ...teachers[name], reviews: newReviews },
-    });
+    }));
   };
   return (
     <div className={styles.container}>
       <button className={styles.close} onClick={() => onClose(false)}>
         X
       </button>
-      <div className={styles.name}>{name} 강사님 - 도로주행 전문</div>
+      <div className={styles.name}>
+        {name} 강사님  <div> <span style={{color:'var(--color-star)'}}> {starAvg.toFixed(1)}</span> <Stars num={starAvg} /></div>
+      </div>
       <ul className={styles.ul}>
         {Object.keys(teachers[name].reviews).map((r) => (
           <li key={r} className={styles.li}>
